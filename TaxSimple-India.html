@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxSimple India — Your Free CA Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --green: #1a6b3c;
+  --green-mid: #228b4e;
+  --green-light: #e8f5ed;
+  --green-pale: #f0faf3;
+  --amber: #e07b2a;
+  --amber-light: #fef3e8;
+  --red: #d63031;
+  --red-light: #fff0f0;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --ink: #1a1a2e;
+  --body: #3d3d5c;
+  --muted: #7a7a9a;
+  --border: #e2e8f0;
+  --bg: #f8f9fc;
+  --white: #ffffff;
+  --card-shadow: 0 2px 16px rgba(26,107,60,0.06);
+  --hover-shadow: 0 8px 32px rgba(26,107,60,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--body); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+button { font-family: 'Nunito', sans-serif; cursor: pointer; }
+input, select, textarea { font-family: 'Nunito', sans-serif; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+
+/* ===== TOP BAR ===== */
+.topbar {
+  background: var(--green);
+  color: white; font-size: 12px;
+  padding: 7px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-note { display: flex; align-items: center; gap: 8px; }
+.topbar-badge { background: var(--amber); padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.topbar-links { display: flex; gap: 20px; }
+.topbar-links a { color: rgba(255,255,255,0.8); font-size: 12px; transition: color 0.2s; }
+.topbar-links a:hover { color: white; }
+
+/* ===== NAVBAR ===== */
+nav {
+  background: white;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  position: sticky; top: 0; z-index: 100;
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 0;
+}
+.nav-logo {
+  font-size: 20px; font-weight: 900;
+  color: var(--green); padding: 16px 0;
+  margin-right: 32px;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; background: var(--green);
+  border-radius: 10px; display: flex; align-items: center;
+  justify-content: center; color: white; font-size: 18px;
+}
+.nav-tabs {
+  display: flex; gap: 0; flex: 1;
+}
+.nav-tab {
+  padding: 18px 18px; font-size: 13.5px; font-weight: 600;
+  color: var(--muted); border: none; background: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-tab:hover { color: var(--green); }
+.nav-tab.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-tab .tab-icon { font-size: 16px; }
+.nav-right {
+  margin-left: auto; display: flex; align-items: center; gap: 12px;
+}
+.fy-badge {
+  background: var(--green-light); color: var(--green);
+  font-size: 12px; font-weight: 700; padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ===== PAGE SYSTEM ===== */
+.page { display: none; min-height: calc(100vh - 100px); }
+.page.active { display: block; }
+
+/* ===== CONTAINERS ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-sm { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.container-md { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+  color: white; padding: 48px 24px 56px;
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+                    radial-gradient(circle at 20% 80%, rgba(0,0,0,0.1) 0%, transparent 40%);
+}
+.page-header-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+.page-header h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; }
+.page-header p { font-size: 16px; opacity: 0.85; max-width: 600px; }
+.page-header-tag {
+  display: inline-block; background: rgba(255,255,255,0.2);
+  padding: 4px 14px; border-radius: 20px; font-size: 12px;
+  font-weight: 700; margin-bottom: 14px; letter-spacing: 0.5px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: white; border-radius: var(--radius);
+  box-shadow: var(--card-shadow); padding: 24px;
+  transition: box-shadow 0.3s ease;
+}
+.card:hover { box-shadow: var(--hover-shadow); }
+.card-sm { background: white; border-radius: var(--radius-sm); padding: 16px; box-shadow: var(--card-shadow); }
+
+/* ===== BADGES ===== */
+.badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-amber { background: var(--amber-light); color: var(--amber); }
+.badge-red { background: var(--red-light); color: var(--red); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+
+/* ===== TOOLTIP ===== */
+.tooltip-wrap { position: relative; display: inline-flex; align-items: center; gap: 4px; }
+.tooltip-icon {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green-light); color: var(--green);
+  font-size: 11px; font-weight: 800;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: help; flex-shrink: 0;
+}
+.tooltip-box {
+  display: none; position: absolute; bottom: calc(100% + 8px); left: 0;
+  background: var(--ink); color: white; font-size: 12.5px; line-height: 1.5;
+  padding: 10px 14px; border-radius: 8px; width: 260px; z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.tooltip-box::after {
+  content: ''; position: absolute; top: 100%; left: 14px;
+  border: 6px solid transparent; border-top-color: var(--ink);
+}
+.tooltip-wrap:hover .tooltip-box { display: block; }
+
+/* ===== INPUTS ===== */
+.input-group { margin-bottom: 20px; }
+.input-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  margin-bottom: 7px;
+}
+.input-field {
+  width: 100%; padding: 12px 16px;
+  border: 2px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 15px; color: var(--ink);
+  transition: border-color 0.2s ease;
+  background: white;
+  outline: none;
+}
+.input-field:focus { border-color: var(--green); }
+.input-prefix {
+  position: relative;
+}
+.input-prefix .sym {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-weight: 700; color: var(--muted); font-size: 15px;
+}
+.input-prefix .input-field { padding-left: 32px; }
+.input-hint { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 700; border: none;
+  transition: all 0.2s ease;
+}
+.btn-green { background: var(--green); color: white; }
+.btn-green:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,107,60,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--green); color: var(--green); }
+.btn-outline:hover { background: var(--green-light); }
+.btn-amber { background: var(--amber); color: white; }
+.btn-amber:hover { background: #c96a1f; }
+.btn-lg { padding: 16px 32px; font-size: 16px; border-radius: 12px; }
+.btn-sm { padding: 8px 16px; font-size: 13px; border-radius: 8px; }
+
+/* ===== RESULT BOX ===== */
+.result-box {
+  background: var(--green-pale);
+  border: 2px solid var(--green);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 20px;
+  display: none;
+}
+.result-box.show { display: block; }
+.result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid rgba(26,107,60,0.1);
+  font-size: 14px;
+}
+.result-row:last-child { border-bottom: none; font-size: 16px; font-weight: 800; color: var(--green); }
+.result-label { color: var(--body); display: flex; align-items: center; gap: 6px; }
+.result-value { font-weight: 700; color: var(--ink); }
+
+/* ===== SECTION TITLES ===== */
+.section-title { font-size: 26px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
+.section-sub { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-track { background: var(--border); border-radius: 20px; height: 10px; overflow: hidden; }
+.progress-fill { background: linear-gradient(90deg, var(--green), var(--green-mid)); border-radius: 20px; height: 100%; transition: width 0.5s ease; }
+
+/* ===== TABS ===== */
+.tab-bar {
+  display: flex; gap: 4px; background: var(--bg);
+  border-radius: var(--radius-sm); padding: 4px;
+  margin-bottom: 24px;
+}
+.tab-btn {
+  flex: 1; padding: 10px; border: none; background: transparent;
+  border-radius: 8px; font-size: 13.5px; font-weight: 600;
+  color: var(--muted); transition: all 0.2s;
+}
+.tab-btn.active { background: white; color: var(--green); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ===== ACCORDION ===== */
+.accordion { border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 12px; }
+.accordion-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; cursor: pointer; background: white;
+  transition: background 0.2s;
+  font-weight: 700; font-size: 14.5px; color: var(--ink);
+}
+.accordion-header:hover { background: var(--green-pale); }
+.accordion-header.open { background: var(--green-pale); color: var(--green); }
+.accordion-arrow { font-size: 18px; transition: transform 0.3s; }
+.accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+.accordion-body { display: none; padding: 0 20px 20px; background: white; border-top: 1px solid var(--border); }
+.accordion-body.open { display: block; }
+
+/* ===== STEP WIZARD ===== */
+.wizard-steps {
+  display: flex; gap: 0; margin-bottom: 32px; position: relative;
+}
+.wizard-steps::before {
+  content: ''; position: absolute; top: 20px; left: 20px; right: 20px;
+  height: 2px; background: var(--border); z-index: 0;
+}
+.wizard-step { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; }
+.wizard-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--border); color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 15px; transition: all 0.3s;
+}
+.wizard-step.done .wizard-dot { background: var(--green); color: white; }
+.wizard-step.active .wizard-dot { background: var(--green); color: white; box-shadow: 0 0 0 5px var(--green-light); }
+.wizard-step-label { font-size: 12px; font-weight: 700; color: var(--muted); text-align: center; }
+.wizard-step.active .wizard-step-label { color: var(--green); }
+.wizard-panel { display: none; }
+.wizard-panel.active { display: block; }
+
+/* ===== SAVING CARD ===== */
+.saving-card {
+  background: white; border-radius: var(--radius);
+  box-shadow: var(--card-shadow); overflow: hidden;
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--green);
+}
+.saving-card:hover { box-shadow: var(--hover-shadow); transform: translateY(-2px); }
+.saving-card-header {
+  padding: 18px 20px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 12px;
+}
+.saving-card-icon { font-size: 28px; flex-shrink: 0; }
+.saving-card-title { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+.saving-card-sub { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.saving-card-amount {
+  background: var(--green-light); color: var(--green);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 14px; font-weight: 800; white-space: nowrap;
+}
+.saving-card-body {
+  padding: 0 20px 18px; font-size: 13.5px; color: var(--body); line-height: 1.6;
+  border-top: 1px solid var(--green-light);
+  display: none;
+}
+.saving-card-body.open { display: block; }
+.saving-card-footer {
+  padding: 12px 20px;
+  background: var(--green-pale);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.saving-card-toggle {
+  font-size: 13px; color: var(--green); font-weight: 700;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ===== CALENDAR ===== */
+.due-date-card {
+  background: white; border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow); padding: 16px 20px;
+  display: flex; gap: 16px; align-items: flex-start;
+  border-left: 5px solid var(--green);
+  margin-bottom: 12px;
+}
+.due-date-card.urgent { border-left-color: var(--red); }
+.due-date-card.warning { border-left-color: var(--amber); }
+.due-date-badge {
+  width: 54px; height: 54px; border-radius: 12px;
+  background: var(--green-light); color: var(--green);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.due-date-badge .day { font-size: 20px; font-weight: 900; line-height: 1; }
+.due-date-badge .month { font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.due-date-card.urgent .due-date-badge { background: var(--red-light); color: var(--red); }
+.due-date-card.warning .due-date-badge { background: var(--amber-light); color: var(--amber); }
+.due-date-title { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+.due-date-desc { font-size: 13px; color: var(--muted); }
+.due-date-countdown { margin-left: auto; text-align: right; font-size: 12px; font-weight: 700; }
+
+/* ===== GLOSSARY ===== */
+.glossary-term {
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.glossary-term:last-child { border-bottom: none; }
+.glossary-word { font-size: 15px; font-weight: 800; color: var(--green); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.glossary-def { font-size: 14px; color: var(--body); line-height: 1.6; }
+.glossary-example { font-size: 13px; color: var(--muted); margin-top: 6px; font-style: italic; padding: 8px 12px; background: var(--bg); border-radius: 6px; border-left: 3px solid var(--green-light); }
+
+/* ===== CHECKLIST ===== */
+.checklist-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.checklist-item:last-child { border-bottom: none; }
+.check-box {
+  width: 24px; height: 24px; border-radius: 6px;
+  border: 2.5px solid var(--border); flex-shrink: 0;
+  cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: all 0.2s; margin-top: 1px;
+}
+.check-box.checked { background: var(--green); border-color: var(--green); color: white; font-size: 13px; }
+.checklist-text { flex: 1; }
+.checklist-name { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+.checklist-desc { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+  background: white; border-radius: var(--radius);
+  box-shadow: var(--card-shadow); padding: 24px;
+  text-align: center;
+}
+.stat-num { font-size: 36px; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+/* ===== ALERT BOXES ===== */
+.alert { border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; }
+.alert-green { background: var(--green-light); color: var(--green); border: 1px solid rgba(26,107,60,0.2); }
+.alert-amber { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(224,123,42,0.2); }
+.alert-blue { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(37,99,235,0.2); }
+.alert-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ===== REGIME COMPARE ===== */
+.regime-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.regime-box { border-radius: var(--radius-sm); padding: 20px; border: 2px solid var(--border); }
+.regime-box.winner { border-color: var(--green); background: var(--green-pale); }
+.regime-name { font-size: 14px; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+.regime-tax { font-size: 28px; font-weight: 900; color: var(--ink); }
+.regime-save { font-size: 13px; color: var(--green); font-weight: 700; }
+
+/* ===== GRID LAYOUTS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+/* ===== SECTION SPACING ===== */
+.section { padding: 40px 0; }
+.section-lg { padding: 56px 0; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.7);
+  padding: 48px 24px 28px; margin-top: 80px;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-brand-name { font-size: 22px; font-weight: 900; color: white; margin-bottom: 10px; }
+.footer-brand-desc { font-size: 13.5px; line-height: 1.6; }
+.footer-col-title { font-size: 13px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links li a { font-size: 13.5px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.footer-links li a:hover { color: white; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; }
+.footer-disclaimer { max-width: 800px; font-size: 11.5px; color: rgba(255,255,255,0.4); margin-top: 12px; line-height: 1.6; }
+
+/* ===== FLOATING ACTION ===== */
+.fab-chat {
+  position: fixed; bottom: 28px; right: 28px; z-index: 500;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: var(--green); color: white;
+  font-size: 24px; border: none;
+  box-shadow: 0 8px 24px rgba(26,107,60,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+}
+.fab-chat:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(26,107,60,0.45); }
+.chat-panel {
+  position: fixed; bottom: 100px; right: 28px; z-index: 500;
+  width: 360px; background: white; border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  display: none; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.chat-panel.open { display: flex; }
+.chat-head {
+  background: var(--green); color: white; padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.chat-head-info { display: flex; align-items: center; gap: 12px; }
+.chat-head-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.chat-head-name { font-weight: 800; font-size: 14px; }
+.chat-head-status { font-size: 12px; opacity: 0.85; }
+.chat-close-btn { background: none; border: none; color: white; font-size: 20px; }
+.chat-body { padding: 16px; height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.chat-msg { max-width: 85%; font-size: 13.5px; line-height: 1.5; padding: 10px 14px; border-radius: 12px; }
+.chat-msg.bot { background: var(--bg); border-radius: 4px 12px 12px 12px; align-self: flex-start; }
+.chat-msg.user { background: var(--green); color: white; border-radius: 12px 4px 12px 12px; align-self: flex-end; }
+.chat-quick { padding: 10px 16px; display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--border); }
+.chat-quick-btn { background: var(--green-light); color: var(--green); border: none; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.chat-input-area { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 10px; }
+.chat-inp { flex: 1; border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; outline: none; }
+.chat-inp:focus { border-color: var(--green); }
+.chat-send-btn { background: var(--green); color: white; border: none; width: 38px; height: 38px; border-radius: 8px; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+
+/* ===== TOAST ===== */
+.toast-container { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); z-index: 600; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.toast { background: var(--ink); color: white; padding: 12px 24px; border-radius: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ===== LOOPHOLE CARD ===== */
+.loophole-card {
+  background: white; border-radius: var(--radius);
+  box-shadow: var(--card-shadow); padding: 24px;
+  border-top: 4px solid var(--amber);
+  transition: all 0.3s ease;
+}
+.loophole-card:hover { box-shadow: var(--hover-shadow); }
+.loophole-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--amber); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.loophole-title { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+.loophole-desc { font-size: 13.5px; color: var(--body); line-height: 1.6; margin-bottom: 14px; }
+.loophole-saving { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-light); color: var(--amber); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 800; }
+.loophole-steps { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.loophole-steps li { font-size: 13px; padding: 8px 12px; background: var(--bg); border-radius: 8px; display: flex; gap: 10px; align-items: flex-start; }
+.loophole-steps li::before { content: '→'; color: var(--amber); font-weight: 800; flex-shrink: 0; }
+
+/* ===== SEARCH ===== */
+.search-bar { position: relative; margin-bottom: 24px; }
+.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--muted); }
+.search-input { width: 100%; padding: 14px 16px 14px 46px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; outline: none; transition: border-color 0.2s; background: white; }
+.search-input:focus { border-color: var(--green); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .regime-compare { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .page-header h1 { font-size: 26px; }
+  nav { overflow-x: auto; }
+  .topbar-links { display: none; }
+}
+
+/* ===== NUMBER FORMATTING ===== */
+.mono { font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer">
+  <div class="toast" id="mainToast"></div>
+</div>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="topbar-note">
+    <span class="topbar-badge">FREE</span>
+    100% Free Tools — No Login Required — No Hidden Charges
+  </div>
+  <div class="topbar-links">
+    <a href="#">📅 FY 2024–25</a>
+    <a href="#">📢 New Tax Regime Default</a>
+    <a href="#">❓ Help</a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">₹</div>
+      TaxSimple
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showPage('home')" data-page="home">
+        <span class="tab-icon">🏠</span> Home
+      </button>
+      <button class="nav-tab" onclick="showPage('calculator')" data-page="calculator">
+        <span class="tab-icon">🧮</span> Tax Calculator
+      </button>
+      <button class="nav-tab" onclick="showPage('savetax')" data-page="savetax">
+        <span class="tab-icon">💡</span> Save Tax
+      </button>
+      <button class="nav-tab" onclick="showPage('loopholes')" data-page="loopholes">
+        <span class="tab-icon">🔍</span> Legal Loopholes
+      </button>
+      <button class="nav-tab" onclick="showPage('tools')" data-page="tools">
+        <span class="tab-icon">📊</span> Tools
+      </button>
+      <button class="nav-tab" onclick="showPage('duedates')" data-page="duedates">
+        <span class="tab-icon">📅</span> Due Dates
+      </button>
+      <button class="nav-tab" onclick="showPage('learn')" data-page="learn">
+        <span class="tab-icon">📚</span> Learn
+      </button>
+      <button class="nav-tab" onclick="showPage('checklist')" data-page="checklist">
+        <span class="tab-icon">✅</span> Checklist
+      </button>
+    </div>
+    <div class="nav-right">
+      <div class="fy-badge">AY 2025-26</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#1a6b3c 0%,#228b4e 60%,#1a6b3c 100%);color:white;padding:64px 24px 80px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 85% 30%,rgba(255,255,255,0.07) 0%,transparent 50%),radial-gradient(circle at 15% 70%,rgba(0,0,0,0.1) 0%,transparent 40%);"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:20px;">
+          🇮🇳 Made for Indian Taxpayers · Completely Free
+        </div>
+        <h1 style="font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.1;margin-bottom:18px;">
+          Taxes made simple.<br><span style="color:#a8d5b5;">No jargon. No fees.</span>
+        </h1>
+        <p style="font-size:17px;opacity:0.88;line-height:1.7;margin-bottom:32px;max-width:500px;">
+          Calculate your income tax, discover legal ways to save money, and understand every filing deadline — all explained in plain Hindi/English. Like having a CA friend who explains everything simply.
+        </p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <button class="btn btn-lg" style="background:white;color:var(--green);" onclick="showPage('calculator')">🧮 Calculate My Tax</button>
+          <button class="btn btn-lg btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;" onclick="showPage('savetax')">💡 How to Save Tax</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:rgba(255,255,255,0.12);border-radius:16px;padding:20px;backdrop-filter:blur(10px);">
+          <div style="font-size:32px;font-weight:900;color:white;">₹1.5L</div>
+          <div style="font-size:13px;opacity:0.8;margin-top:4px;">Max 80C savings per year</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.12);border-radius:16px;padding:20px;backdrop-filter:blur(10px);">
+          <div style="font-size:32px;font-weight:900;color:white;">30+</div>
+          <div style="font-size:13px;opacity:0.8;margin-top:4px;">Legal ways to save tax</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.12);border-radius:16px;padding:20px;backdrop-filter:blur(10px);">
+          <div style="font-size:32px;font-weight:900;color:white;">₹0</div>
+          <div style="font-size:13px;opacity:0.8;margin-top:4px;">Cost to use all our tools</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.12);border-radius:16px;padding:20px;backdrop-filter:blur(10px);">
+          <div style="font-size:32px;font-weight:900;color:white;">2 min</div>
+          <div style="font-size:13px;opacity:0.8;margin-top:4px;">To calculate full tax</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Tools -->
+  <div class="container section-lg">
+    <div style="text-align:center;margin-bottom:40px;">
+      <h2 class="section-title">What do you need help with?</h2>
+      <p class="section-sub">Choose a topic — we explain everything in simple language, no CA degree needed</p>
+    </div>
+    <div class="grid-3" style="gap:24px;">
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('calculator')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">🧮</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">Income Tax Calculator</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">Enter your salary and we'll tell you how much tax you owe — and how much you can save. Step by step, no confusion.</p>
+        <span class="badge badge-green">Old & New Regime →</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('savetax')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">💰</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">Save Tax Legally</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">30+ easy ways to reduce your tax bill. Every section explained in simple terms — what it is, how to use it, and how much you save.</p>
+        <span class="badge badge-amber">Save up to ₹5L+ →</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('loopholes')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">🔍</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">Legal Tax Loopholes</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">Smart, completely legal strategies that most people miss. These are real tax-saving secrets that your employer won't tell you about.</p>
+        <span class="badge badge-blue">Verified Legal Tips →</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('tools')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">📊</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">All Calculators</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">HRA, NPS, Home Loan, GST, TDS, Gratuity, PPF maturity, Capital Gains — every calculator you need, in one place.</p>
+        <span class="badge badge-green">10+ Calculators →</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('duedates')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">📅</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">Due Dates & Deadlines</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">Never miss a deadline again. ITR, GST, TDS, advance tax — all dates in one place with countdowns and penalty warnings.</p>
+        <span class="badge badge-red">Deadline Alerts →</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s;" onclick="showPage('learn')" onmouseenter="this.style.borderColor='var(--green)'" onmouseleave="this.style.borderColor='transparent'">
+        <div style="font-size:40px;margin-bottom:14px;">📚</div>
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:8px;">Tax Glossary & Guides</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;">What is Form 26AS? What is TDS? What is AIS? Every tax term explained in simple words with real examples.</p>
+        <span class="badge badge-blue">50+ Terms Explained →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Banner -->
+  <div style="background:var(--amber-light);border-top:2px solid var(--amber);border-bottom:2px solid var(--amber);padding:16px 24px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:20px;">⚠️</span>
+      <strong style="color:var(--amber);font-size:14px;">FY 2024-25 Important:</strong>
+      <span style="font-size:14px;color:var(--body);">New Tax Regime is now the DEFAULT. You must actively choose the Old Regime if you want to claim 80C, HRA, and other deductions. <button onclick="showPage('calculator')" style="background:none;border:none;color:var(--amber);font-weight:800;font-size:14px;text-decoration:underline;cursor:pointer;">Calculate which is better for you →</button></span>
+    </div>
+  </div>
+
+  <!-- Quick Tax Slabs -->
+  <div class="container section-lg">
+    <div class="grid-2" style="gap:32px;align-items:start;">
+      <div>
+        <h2 class="section-title">Tax Slabs FY 2024–25 at a Glance</h2>
+        <p class="section-sub">How much tax you pay depends on which regime you choose</p>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab('slabs','new-slab')">New Regime (Default)</button>
+          <button class="tab-btn" onclick="switchTab('slabs','old-slab')">Old Regime</button>
+        </div>
+        <div id="new-slab" class="tab-content active">
+          <div class="alert alert-blue"><div class="alert-icon">ℹ️</div><div>No deductions allowed (no 80C, no HRA etc.) BUT tax rates are lower. Good if you have few investments.</div></div>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <tr style="background:var(--green);color:white;"><th style="padding:12px 16px;text-align:left;border-radius:8px 0 0 0;">Income Range</th><th style="padding:12px 16px;text-align:left;">Tax Rate</th><th style="padding:12px 16px;text-align:left;border-radius:0 8px 0 0;">What this means</th></tr>
+            <tr style="background:white;"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">Up to ₹3,00,000</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-green">0% — Zero Tax</span></td><td style="padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted);">No tax at all</td></tr>
+            <tr style="background:var(--bg);"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹3L – ₹7L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-blue">5%</span></td><td style="padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted);">But 87A rebate = zero tax if income ≤ ₹7L</td></tr>
+            <tr style="background:white;"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹7L – ₹10L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-amber">10%</span></td><td style="padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted);">Only on amount above ₹7L</td></tr>
+            <tr style="background:var(--bg);"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹10L – ₹12L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-amber">15%</span></td><td style="padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted);">Slab rate</td></tr>
+            <tr style="background:white;"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹12L – ₹15L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-red">20%</span></td><td style="padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted);">Slab rate</td></tr>
+            <tr style="background:var(--bg);"><td style="padding:12px 16px;">Above ₹15L</td><td style="padding:12px 16px;"><span class="badge badge-red">30%</span></td><td style="padding:12px 16px;color:var(--muted);">Only on amount above ₹15L</td></tr>
+          </table>
+          <div class="alert alert-green" style="margin-top:16px;"><div class="alert-icon">💡</div><div><strong>Standard Deduction of ₹75,000</strong> is now available in New Regime too! So if your salary is ₹7.75L or less → Zero tax!</div></div>
+        </div>
+        <div id="old-slab" class="tab-content">
+          <div class="alert alert-amber"><div class="alert-icon">⚠️</div><div>You must opt-in for old regime. Allows 80C, HRA, and many deductions. Better if you have investments and home loan.</div></div>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <tr style="background:var(--green);color:white;"><th style="padding:12px 16px;text-align:left;border-radius:8px 0 0 0;">Income Range</th><th style="padding:12px 16px;text-align:left;">Tax Rate</th></tr>
+            <tr style="background:white;"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">Up to ₹2,50,000</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-green">0%</span></td></tr>
+            <tr style="background:var(--bg);"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹2.5L – ₹5L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-blue">5%</span></td></tr>
+            <tr style="background:white;"><td style="padding:12px 16px;border-bottom:1px solid var(--border);">₹5L – ₹10L</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);"><span class="badge badge-amber">20%</span></td></tr>
+            <tr style="background:var(--bg);"><td style="padding:12px 16px;">Above ₹10L</td><td style="padding:12px 16px;"><span class="badge badge-red">30%</span></td></tr>
+          </table>
+          <div class="alert alert-green" style="margin-top:16px;"><div class="alert-icon">💡</div><div>With 80C (₹1.5L) + 80D (₹25K) + Standard Deduction (₹50K) + HRA, you can reduce taxable income by ₹3L+ easily!</div></div>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title">Your Tax — Quick Estimate</h2>
+        <p class="section-sub">Enter your annual salary for a 30-second estimate</p>
+        <div class="card">
+          <div class="input-group">
+            <div class="input-label">Annual Salary / Income (₹)</div>
+            <div class="input-prefix">
+              <span class="sym">₹</span>
+              <input type="number" class="input-field" id="quick-income" placeholder="e.g. 800000" oninput="quickEstimate()" style="padding-left:32px;">
+            </div>
+            <div class="input-hint">This is your total income before any deductions</div>
+          </div>
+          <div id="quick-result" style="display:none;">
+            <div class="regime-compare">
+              <div class="regime-box" id="qr-old-box">
+                <div class="regime-name">Old Regime <span id="qr-old-win" style="display:none" class="badge badge-green" style="font-size:10px">✓ Better</span></div>
+                <div class="regime-tax" id="qr-old">₹0</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:4px;">With standard deductions</div>
+              </div>
+              <div class="regime-box" id="qr-new-box">
+                <div class="regime-name">New Regime <span id="qr-new-win" style="display:none" class="badge badge-green" style="font-size:10px">✓ Better</span></div>
+                <div class="regime-tax" id="qr-new">₹0</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:4px;">With ₹75K std deduction</div>
+              </div>
+            </div>
+            <div id="qr-msg" style="margin-top:14px;padding:12px 16px;border-radius:8px;font-size:13.5px;font-weight:600;"></div>
+            <button class="btn btn-green" style="width:100%;margin-top:14px;justify-content:center;" onclick="showPage('calculator')">Get Detailed Calculation + Tips →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips Teaser -->
+  <div style="background:var(--green);color:white;padding:56px 24px;">
+    <div style="max-width:1200px;margin:0 auto;text-align:center;">
+      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;opacity:0.7;margin-bottom:12px;">Did you know?</div>
+      <h2 style="font-size:32px;font-weight:900;margin-bottom:20px;">Most Indians pay <span style="color:#a8d5b5;">₹50,000+ more tax</span> than needed</h2>
+      <p style="font-size:16px;opacity:0.85;max-width:600px;margin:0 auto 32px;">Simply because they don't know about legal deductions like HRA, NPS, 80C, 80D, home loan interest, and more. We'll show you every single one.</p>
+      <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
+        <div style="text-align:center;"><div style="font-size:28px;font-weight:900;">₹1,50,000</div><div style="font-size:13px;opacity:0.75;margin-top:4px;">Section 80C alone saves</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
+        <div style="text-align:center;"><div style="font-size:28px;font-weight:900;">₹2,00,000</div><div style="font-size:13px;opacity:0.75;margin-top:4px;">Home loan interest deduction</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
+        <div style="text-align:center;"><div style="font-size:28px;font-weight:900;">₹50,000</div><div style="font-size:13px;opacity:0.75;margin-top:4px;">NPS extra deduction (80CCD)</div></div>
+      </div>
+      <button class="btn btn-lg" style="background:white;color:var(--green);margin-top:32px;" onclick="showPage('savetax')">Show Me How to Save Tax →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE: CALCULATOR ===== -->
+<div class="page" id="page-calculator">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">🧮 Step-by-Step Tax Calculator</div>
+      <h1>Calculate Your Income Tax — FY 2024–25</h1>
+      <p>We'll walk you through it step by step. Every field has an explanation. Takes about 2 minutes.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start;">
+
+      <!-- Calculator Form -->
+      <div>
+        <!-- Step Wizard -->
+        <div class="wizard-steps" id="wizSteps">
+          <div class="wizard-step active" id="ws1"><div class="wizard-dot">1</div><div class="wizard-step-label">Income</div></div>
+          <div class="wizard-step" id="ws2"><div class="wizard-dot">2</div><div class="wizard-step-label">Deductions</div></div>
+          <div class="wizard-step" id="ws3"><div class="wizard-dot">3</div><div class="wizard-step-label">HRA & Rent</div></div>
+          <div class="wizard-step" id="ws4"><div class="wizard-dot">4</div><div class="wizard-step-label">Results</div></div>
+        </div>
+
+        <!-- Step 1: Income -->
+        <div class="card wizard-panel active" id="step1">
+          <h3 style="font-size:20px;font-weight:900;color:var(--ink);margin-bottom:6px;">Step 1: Tell us your income</h3>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:24px;">Include all sources of income you received in FY 2024–25 (April 2024 – March 2025)</p>
+          <div class="input-group">
+            <div class="input-label">
+              Basic Salary / Annual CTC
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">This is your total salary package per year before any deductions. You can find this in your offer letter or payslip. If you're paid monthly, multiply by 12.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-salary" placeholder="e.g. 900000" oninput="calcLive()" style="padding-left:32px;"></div>
+            <div class="input-hint">💡 Enter your gross annual salary (before PF deduction or tax)</div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Income from Other Sources
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">This includes: interest from savings account, FD interest, income from freelance work, rental income, interest from bonds, etc. If none, leave at 0.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-other" placeholder="e.g. 50000" oninput="calcLive()" style="padding-left:32px;"></div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Annual Bonus (if any)
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Performance bonus, festival bonus, or any additional income from your employer. Bonuses are fully taxable.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-bonus" placeholder="e.g. 100000" oninput="calcLive()" style="padding-left:32px;"></div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Age Group
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Senior citizens (60+) and super senior citizens (80+) get higher basic exemption limits under the old regime.</div></div>
+            </div>
+            <select class="input-field" id="c-age" onchange="calcLive()">
+              <option value="below60">Below 60 years</option>
+              <option value="60to80">60 to 80 years (Senior Citizen)</option>
+              <option value="above80">Above 80 years (Super Senior Citizen)</option>
+            </select>
+          </div>
+          <button class="btn btn-green" onclick="goStep(2)" style="width:100%;justify-content:center;">Next: Add Deductions →</button>
+        </div>
+
+        <!-- Step 2: Deductions -->
+        <div class="card wizard-panel" id="step2" style="display:none;">
+          <h3 style="font-size:20px;font-weight:900;color:var(--ink);margin-bottom:6px;">Step 2: Your Tax-Saving Investments</h3>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:6px;">These deductions reduce your taxable income. Only applicable in Old Regime. <strong style="color:var(--amber)">New Regime doesn't allow these.</strong></p>
+          <div class="alert alert-blue" style="margin-bottom:20px;"><div class="alert-icon">💡</div><div>Not sure what to fill? Don't worry — enter 0 for anything you haven't invested in. We'll tell you what you're missing!</div></div>
+
+          <div class="input-group">
+            <div class="input-label">
+              Section 80C Investments
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Investments that qualify: PPF (Public Provident Fund), ELSS mutual funds, NSC, LIC premium, EPF (employee PF contribution), principal repayment of home loan, Sukanya Samriddhi, 5-year FD, tuition fees for children. Maximum limit: ₹1,50,000 per year.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-80c" placeholder="Max ₹1,50,000" max="150000" oninput="calcLive()" style="padding-left:32px;"></div>
+            <div class="input-hint">💡 Examples: PPF, ELSS, LIC, EPF, NSC — all combined, max ₹1.5 lakh</div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Section 80D — Health Insurance Premium
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Premium paid for health insurance for yourself, spouse, children (max ₹25,000) PLUS parents (extra ₹25,000, or ₹50,000 if parents are senior citizens). Medical expenses for super senior parents (₹50,000 even without insurance).</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-80d" placeholder="Max ₹25,000–₹75,000" oninput="calcLive()" style="padding-left:32px;"></div>
+            <div class="input-hint">💡 Your health insurance + parents' insurance premium. Max ₹25K self + ₹25K parents</div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Section 80CCD(1B) — NPS Extra Investment
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Additional investment in NPS (National Pension System) over and above 80C. This is a SEPARATE deduction of up to ₹50,000 — on top of the 80C limit! Great for extra tax saving if you've already maxed 80C.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-nps" placeholder="Max ₹50,000" oninput="calcLive()" style="padding-left:32px;"></div>
+            <div class="input-hint">💡 Extra ₹50K NPS saving — completely SEPARATE from 80C! Saves up to ₹15,600 in tax</div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Section 24(b) — Home Loan Interest
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">If you have a home loan on a self-occupied property, you can deduct up to ₹2,00,000 of interest paid per year. Check your loan statement for interest amount. This is the interest component only, not principal (principal goes under 80C).</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-hl" placeholder="Max ₹2,00,000" oninput="calcLive()" style="padding-left:32px;"></div>
+            <div class="input-hint">💡 Interest paid on home loan this year (from your bank statement)</div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Section 80E — Education Loan Interest
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">If you took an education loan (for yourself, spouse, or children), the ENTIRE interest amount is deductible — no upper limit! Available for 8 years from the year you start repaying.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-edu" placeholder="No upper limit" oninput="calcLive()" style="padding-left:32px;"></div>
+          </div>
+          <div class="input-group">
+            <div class="input-label">
+              Section 80G — Donations
+              <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Donations to approved charities, PM Relief Fund, etc. 50% or 100% deductible depending on the organisation. Get an 80G receipt from the charity. Donations to PM-CARES = 100% deductible.</div></div>
+            </div>
+            <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-80g" placeholder="Donations to approved charities" oninput="calcLive()" style="padding-left:32px;"></div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-outline" onclick="goStep(1)" style="flex:1;justify-content:center;">← Back</button>
+            <button class="btn btn-green" onclick="goStep(3)" style="flex:2;justify-content:center;">Next: HRA & Rent →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: HRA -->
+        <div class="card wizard-panel" id="step3" style="display:none;">
+          <h3 style="font-size:20px;font-weight:900;color:var(--ink);margin-bottom:6px;">Step 3: HRA & House Rent</h3>
+          <div class="alert alert-blue" style="margin-bottom:20px;"><div class="alert-icon">🏠</div><div><strong>HRA (House Rent Allowance)</strong> is a huge tax saving for people who live on rent and receive HRA from their employer. Skip this if you own your home or don't pay rent.</div></div>
+
+          <div class="input-group">
+            <div class="input-label">
+              Do you receive HRA from employer and pay rent?
+            </div>
+            <select class="input-field" id="c-hra-yn" onchange="toggleHRA()">
+              <option value="no">No — I own my home / no HRA</option>
+              <option value="yes">Yes — I pay rent and receive HRA</option>
+            </select>
+          </div>
+
+          <div id="hra-fields" style="display:none;">
+            <div class="input-group">
+              <div class="input-label">
+                HRA received from employer (annual)
+                <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">HRA is a component in your salary slip. It's the "House Rent Allowance" shown separately. Check your payslip — it might say HRA: ₹X,XXX per month. Multiply by 12 for annual.</div></div>
+              </div>
+              <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-hra-rec" placeholder="Annual HRA from salary" oninput="calcLive()" style="padding-left:32px;"></div>
+            </div>
+            <div class="input-group">
+              <div class="input-label">
+                Rent paid per year
+                <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Total rent you paid. If you pay ₹20,000/month, enter ₹2,40,000. You need rent receipts or bank statements as proof.</div></div>
+              </div>
+              <div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="c-rent" placeholder="Annual rent paid" oninput="calcLive()" style="padding-left:32px;"></div>
+            </div>
+            <div class="input-group">
+              <div class="input-label">City of residence</div>
+              <select class="input-field" id="c-city" onchange="calcLive()">
+                <option value="metro">Metro city (Delhi, Mumbai, Chennai, Kolkata)</option>
+                <option value="nonmetro">Non-metro city</option>
+              </select>
+              <div class="input-hint">💡 Metro cities get 50% of basic salary as HRA limit, non-metro gets 40%</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-outline" onclick="goStep(2)" style="flex:1;justify-content:center;">← Back</button>
+            <button class="btn btn-green" onclick="goStep(4);fullCalc();" style="flex:2;justify-content:center;">Calculate My Tax →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div class="card wizard-panel" id="step4" style="display:none;">
+          <h3 style="font-size:20px;font-weight:900;color:var(--ink);margin-bottom:6px;">Your Tax Calculation Results</h3>
+          <div id="calc-results-area"></div>
+          <button class="btn btn-outline" onclick="goStep(1)" style="width:100%;justify-content:center;margin-top:16px;">← Start Over</button>
+        </div>
+      </div>
+
+      <!-- Live Summary Sidebar -->
+      <div style="position:sticky;top:80px;">
+        <div class="card" style="border:2px solid var(--green);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <h4 style="font-size:15px;font-weight:800;color:var(--ink);">Live Estimate</h4>
+            <span class="badge badge-green">Auto-updates</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted);">Gross Income</span>
+              <span style="font-weight:700;" id="live-gross">₹0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted);">Total Deductions (Old)</span>
+              <span style="font-weight:700;color:var(--green);" id="live-ded">₹0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted);">Taxable (Old Regime)</span>
+              <span style="font-weight:700;" id="live-taxable-old">₹0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted);">Taxable (New Regime)</span>
+              <span style="font-weight:700;" id="live-taxable-new">₹0</span>
+            </div>
+            <div style="background:var(--green-pale);border-radius:10px;padding:12px;margin-top:4px;">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Estimated Tax (Old Regime)</div>
+              <div style="font-size:26px;font-weight:900;color:var(--ink);" id="live-tax-old">₹0</div>
+            </div>
+            <div style="background:var(--bg);border-radius:10px;padding:12px;">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Estimated Tax (New Regime)</div>
+              <div style="font-size:26px;font-weight:900;color:var(--ink);" id="live-tax-new">₹0</div>
+            </div>
+            <div id="live-rec" style="font-size:13px;font-weight:700;padding:10px;border-radius:8px;text-align:center;background:var(--green-light);color:var(--green);"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:20px;background:var(--amber-light);border:2px solid var(--amber);">
+          <div style="font-size:14px;font-weight:800;color:var(--amber);margin-bottom:10px;">🎯 Missed Savings Detector</div>
+          <div id="missed-savings" style="font-size:13px;line-height:1.6;color:var(--body);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: SAVE TAX ===== -->
+<div class="page" id="page-savetax">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">💡 Tax Saving Guide</div>
+      <h1>30+ Legal Ways to Reduce Your Tax — Explained Simply</h1>
+      <p>No jargon. Every method explained in plain language with real examples and exact savings amount.</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+
+    <div class="alert alert-green"><div class="alert-icon">✅</div><div><strong>All methods listed here are 100% legal</strong> under the Income Tax Act. These are not "tricks" — they are deductions and exemptions the government itself built into the law to encourage certain behaviours.</div></div>
+
+    <!-- Filter Tabs -->
+    <div class="tab-bar" style="margin-bottom:32px;">
+      <button class="tab-btn active" onclick="filterSaving('all')">All Methods</button>
+      <button class="tab-btn" onclick="filterSaving('investments')">💰 Investments</button>
+      <button class="tab-btn" onclick="filterSaving('insurance')">🏥 Insurance</button>
+      <button class="tab-btn" onclick="filterSaving('housing')">🏠 Home & Rent</button>
+      <button class="tab-btn" onclick="filterSaving('salary')">💼 Salary Tricks</button>
+      <button class="tab-btn" onclick="filterSaving('family')">👨‍👩‍👧 Family</button>
+    </div>
+
+    <div id="saving-cards-container" class="grid-2" style="gap:20px;align-items:start;"></div>
+  </div>
+</div>
+
+<!-- ===== PAGE: LEGAL LOOPHOLES ===== -->
+<div class="page" id="page-loopholes">
+  <div class="page-header" style="background:linear-gradient(135deg,#92400e,#b45309);">
+    <div class="page-header-inner">
+      <div class="page-header-tag">🔍 Smart Tax Strategies</div>
+      <h1>Legal Tax Loopholes Most People Don't Know</h1>
+      <p>These are advanced but completely legal strategies in the Income Tax Act that most salaried employees and business owners miss entirely.</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+    <div class="alert alert-amber"><div class="alert-icon">⚠️</div><div><strong>Important:</strong> These are 100% legal provisions in the Income Tax Act. We call them "loopholes" informally because they're underused — every single one is explicitly permitted by law. Always keep documentation/proofs.</div></div>
+    <div id="loophole-cards" class="grid-2" style="gap:24px;align-items:start;margin-top:24px;"></div>
+  </div>
+</div>
+
+<!-- ===== PAGE: TOOLS ===== -->
+<div class="page" id="page-tools">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">📊 Financial Calculators</div>
+      <h1>All Calculators — Free, Instant, Accurate</h1>
+      <p>HRA, NPS, GST, TDS, PPF, Home Loan, Gratuity, Capital Gains — everything in one place</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('tools','t-hra')">🏠 HRA</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-gst')">🧾 GST</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-tds')">📋 TDS</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-ppf')">🏦 PPF</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-nps')">🎯 NPS</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-cg')">📈 Capital Gains</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-gratuity')">💼 Gratuity</button>
+      <button class="tab-btn" onclick="switchTab('tools','t-emi')">🏡 Home Loan EMI</button>
+    </div>
+
+    <!-- HRA Calculator -->
+    <div id="t-hra" class="tab-content active">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">HRA Exemption Calculator</h3>
+          <div class="alert alert-blue" style="margin-bottom:20px;"><div class="alert-icon">ℹ️</div><div>HRA exemption = Lowest of: (1) Actual HRA received, (2) 50%/40% of Basic Salary, (3) Rent paid minus 10% of Basic Salary</div></div>
+          <div class="input-group"><div class="input-label">Basic Salary (Annual) <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Only the basic salary component, not total CTC. Check your payslip for "Basic" amount.</div></div></div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="hra-basic" placeholder="e.g. 600000" oninput="calcHRA()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">HRA Received (Annual)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="hra-recv" placeholder="e.g. 240000" oninput="calcHRA()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Rent Paid (Annual)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="hra-rent" placeholder="e.g. 300000" oninput="calcHRA()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">City Type</div><select class="input-field" id="hra-city" onchange="calcHRA()"><option value="metro">Metro (Delhi/Mumbai/Chennai/Kolkata) — 50%</option><option value="nonmetro">Non-Metro — 40%</option></select></div>
+          <div class="result-box" id="hra-result">
+            <div class="result-row"><span class="result-label">Actual HRA Received</span><span class="result-value" id="hr1">—</span></div>
+            <div class="result-row"><span class="result-label">50%/40% of Basic Salary</span><span class="result-value" id="hr2">—</span></div>
+            <div class="result-row"><span class="result-label">Rent - 10% of Basic</span><span class="result-value" id="hr3">—</span></div>
+            <div class="result-row"><span class="result-label">✅ HRA Exemption (Lowest)</span><span class="result-value" id="hr4">—</span></div>
+            <div class="result-row"><span class="result-label">Taxable HRA (remainder)</span><span class="result-value" id="hr5">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--green-pale);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--green);">💡 HRA Tips</h4>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.6;">
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Rent receipts are mandatory</strong> if rent exceeds ₹1 lakh/year. Keep monthly receipts with landlord's PAN.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Paying rent to parents?</strong> You can claim HRA exemption by paying rent to your parents! (They'll declare it as rental income though)</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>No HRA in salary?</strong> You can still claim deduction under Section 80GG if you're a salaried employee without HRA component.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Home loan + Rent?</strong> If you have a home loan on a property you don't live in, you can claim BOTH HRA and home loan interest deduction!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GST Calculator -->
+    <div id="t-gst" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">GST Calculator</h3>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;">Calculate GST on any product or service</p>
+          <div class="input-group"><div class="input-label">Amount (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="gst-amt" placeholder="Enter amount" oninput="calcGST()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">GST Rate <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">0% = Essential goods (food grains, eggs, milk). 5% = Basic necessities. 12% = Processed food, computers. 18% = Most services, electronics. 28% = Luxury goods, cars, AC.</div></div></div>
+          <select class="input-field" id="gst-rate" onchange="calcGST()">
+            <option value="0">0% — Essential goods (food grains, milk, eggs)</option>
+            <option value="5">5% — Basic necessities (sugar, tea, edible oil)</option>
+            <option value="12">12% — Processed food, computers</option>
+            <option value="18" selected>18% — Most services, electronics, restaurants</option>
+            <option value="28">28% — Luxury goods, cars, tobacco, AC</option>
+          </select></div>
+          <div class="input-group"><div class="input-label">Calculation Type</div><select class="input-field" id="gst-type" onchange="calcGST()"><option value="excl">Exclusive — Add GST to amount</option><option value="incl">Inclusive — GST already included, extract it</option></select></div>
+          <div class="result-box" id="gst-result">
+            <div class="result-row"><span class="result-label">Base Amount</span><span class="result-value" id="gst-base">—</span></div>
+            <div class="result-row"><span class="result-label">CGST (Central GST — 50%)</span><span class="result-value" id="gst-cgst">—</span></div>
+            <div class="result-row"><span class="result-label">SGST (State GST — 50%)</span><span class="result-value" id="gst-sgst">—</span></div>
+            <div class="result-row"><span class="result-label">Total GST</span><span class="result-value" id="gst-total">—</span></div>
+            <div class="result-row"><span class="result-label">Invoice Total</span><span class="result-value" id="gst-invoice">—</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:14px;">GST Rate Quick Reference</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;">
+            <div style="padding:10px 14px;background:var(--green-pale);border-radius:8px;border-left:4px solid var(--green);"><strong>0%:</strong> Raw food grains, milk, eggs, fresh vegetables, books</div>
+            <div style="padding:10px 14px;background:var(--blue-light);border-radius:8px;border-left:4px solid var(--blue);"><strong>5%:</strong> Sugar, tea, coffee (unprocessed), edible oil, domestic LPG</div>
+            <div style="padding:10px 14px;background:var(--green-pale);border-radius:8px;border-left:4px solid #10b981;"><strong>12%:</strong> Packaged food, fruit juice, computers, mobile phones (old)</div>
+            <div style="padding:10px 14px;background:var(--amber-light);border-radius:8px;border-left:4px solid var(--amber);"><strong>18%:</strong> Restaurants (AC), electronics, most services, hair oil, soap</div>
+            <div style="padding:10px 14px;background:var(--red-light);border-radius:8px;border-left:4px solid var(--red);"><strong>28%:</strong> Luxury cars, tobacco, pan masala, aerated drinks, casinos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TDS Calculator -->
+    <div id="t-tds" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">TDS Calculator</h3>
+          <div class="alert alert-blue" style="margin-bottom:20px;"><div class="alert-icon">ℹ️</div><div><strong>TDS = Tax Deducted at Source.</strong> When you receive certain payments, the payer deducts tax before paying you. This appears in Form 26AS.</div></div>
+          <div class="input-group"><div class="input-label">Payment Type <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">194A = Interest from bank. 194C = Payment to contractors. 194H = Commission. 194I = Rent payments above ₹2.4L/year. 194J = Professional fees (doctor, CA, lawyer). 194N = Cash withdrawal.</div></div></div>
+          <select class="input-field" id="tds-type" onchange="calcTDS()">
+            <option value="194A_10">194A — Interest from Bank/FD (10%)</option>
+            <option value="194C_1">194C — Contractor payment, individual (1%)</option>
+            <option value="194C_2">194C — Contractor payment, company (2%)</option>
+            <option value="194H_5">194H — Commission / Brokerage (5%)</option>
+            <option value="194I_10">194I — Rent on land/building (10%)</option>
+            <option value="194J_10">194J — Professional/Technical fees (10%)</option>
+            <option value="194N_2">194N — Cash withdrawal above ₹1Cr (2%)</option>
+          </select></div>
+          <div class="input-group"><div class="input-label">Payment Amount (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="tds-amt" placeholder="Enter payment amount" oninput="calcTDS()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Payee has PAN?</div><select class="input-field" id="tds-pan" onchange="calcTDS()"><option value="yes">Yes — Normal TDS rate applies</option><option value="no">No PAN — Higher rate (20% or normal, whichever is higher)</option></select></div>
+          <div class="result-box" id="tds-result">
+            <div class="result-row"><span class="result-label">Section</span><span class="result-value" id="tds-sec">—</span></div>
+            <div class="result-row"><span class="result-label">TDS Rate Applied</span><span class="result-value" id="tds-rate">—</span></div>
+            <div class="result-row"><span class="result-label">TDS Amount to Deduct</span><span class="result-value" id="tds-amount">—</span></div>
+            <div class="result-row"><span class="result-label">Net Payment to Party</span><span class="result-value" id="tds-net">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--blue-light);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--blue);">TDS — What You Need to Know</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px;line-height:1.6;">
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Check TDS in Form 26AS</strong> — Login to income tax portal → View Form 26AS. All TDS deducted is shown here.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>TDS on Salary</strong> — Your employer deducts TDS monthly based on your estimated income. Submit investment proofs to reduce TDS.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Excess TDS?</strong> — If more TDS was deducted than your actual tax, you get a REFUND when you file ITR.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Form 15G / 15H</strong> — If your total income is below taxable limit, submit Form 15G (below 60) or 15H (senior citizen) to your bank to avoid TDS on FD interest.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PPF Calculator -->
+    <div id="t-ppf" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">PPF Maturity Calculator</h3>
+          <div class="alert alert-green" style="margin-bottom:20px;"><div class="alert-icon">🏦</div><div><strong>PPF (Public Provident Fund)</strong> — 15-year lock-in, tax-free returns, EEE status (Exempt-Exempt-Exempt). One of the safest investments with guaranteed returns.</div></div>
+          <div class="input-group"><div class="input-label">Annual Investment (₹) <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">You can invest between ₹500 and ₹1,50,000 per year in PPF. Investing the maximum (₹1.5L) saves ₹46,800 in tax annually (at 30% slab) and earns tax-free interest.</div></div></div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="ppf-inv" placeholder="Max ₹1,50,000" oninput="calcPPF()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Interest Rate (%)</div><input type="number" class="input-field" id="ppf-rate" value="7.1" oninput="calcPPF()"><div class="input-hint">Current PPF rate: 7.1% p.a. (Q1 FY25)</div></div>
+          <div class="input-group"><div class="input-label">Investment Period (Years)</div><select class="input-field" id="ppf-years" onchange="calcPPF()"><option value="15" selected>15 years (minimum tenure)</option><option value="20">20 years (1 extension)</option><option value="25">25 years (2 extensions)</option><option value="30">30 years (3 extensions)</option></select></div>
+          <div class="result-box" id="ppf-result">
+            <div class="result-row"><span class="result-label">Total Amount Invested</span><span class="result-value" id="ppf-invested">—</span></div>
+            <div class="result-row"><span class="result-label">Total Interest Earned</span><span class="result-value" id="ppf-interest">—</span></div>
+            <div class="result-row"><span class="result-label">Tax Saved (80C, @30%)</span><span class="result-value" id="ppf-taxsaved">—</span></div>
+            <div class="result-row"><span class="result-label">Maturity Amount (Tax-Free!)</span><span class="result-value" id="ppf-maturity">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--green-pale);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--green);">Why PPF is Amazing</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px;">
+            <div style="display:flex;gap:10px;padding:12px;background:white;border-radius:8px;align-items:flex-start;"><span style="font-size:20px;">🛡️</span><div><strong>Government Guaranteed</strong><br>Your money is backed by Government of India. Cannot lose principal.</div></div>
+            <div style="display:flex;gap:10px;padding:12px;background:white;border-radius:8px;align-items:flex-start;"><span style="font-size:20px;">0️⃣</span><div><strong>Triple Tax-Free (EEE)</strong><br>Investment deductible + interest not taxed + maturity amount not taxed</div></div>
+            <div style="display:flex;gap:10px;padding:12px;background:white;border-radius:8px;align-items:flex-start;"><span style="font-size:20px;">🔒</span><div><strong>Creditor Protection</strong><br>PPF cannot be seized by courts or creditors — protected by law!</div></div>
+            <div style="display:flex;gap:10px;padding:12px;background:white;border-radius:8px;align-items:flex-start;"><span style="font-size:20px;">💳</span><div><strong>Loan Available</strong><br>Loan against PPF from 3rd year. No need to break the account.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NPS Calculator -->
+    <div id="t-nps" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">NPS Tax Benefit + Returns Calculator</h3>
+          <div class="alert alert-green" style="margin-bottom:20px;"><div class="alert-icon">🎯</div><div><strong>NPS (National Pension System)</strong> gives you an extra ₹50,000 deduction under 80CCD(1B) — completely separate from your 80C limit!</div></div>
+          <div class="input-group"><div class="input-label">Annual NPS Contribution (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="nps-contrib" placeholder="Max ₹50,000 for extra deduction" oninput="calcNPS()" style="padding-left:32px;"></div><div class="input-hint">For 80CCD(1B) benefit, contribute up to ₹50,000 extra (above 80C)</div></div>
+          <div class="input-group"><div class="input-label">Expected Return Rate (%)</div><input type="number" class="input-field" id="nps-return" value="10" oninput="calcNPS()"><div class="input-hint">NPS historically gives ~10-12% returns (equity-heavy)</div></div>
+          <div class="input-group"><div class="input-label">Years to Retirement</div><input type="number" class="input-field" id="nps-years" placeholder="e.g. 25" oninput="calcNPS()"></div>
+          <div class="input-group"><div class="input-label">Your Tax Slab</div><select class="input-field" id="nps-slab" onchange="calcNPS()"><option value="5">5% slab</option><option value="20">20% slab</option><option value="30" selected>30% slab</option></select></div>
+          <div class="result-box" id="nps-result">
+            <div class="result-row"><span class="result-label">Annual Tax Saved</span><span class="result-value" id="nps-taxsave">—</span></div>
+            <div class="result-row"><span class="result-label">Total Invested</span><span class="result-value" id="nps-total-inv">—</span></div>
+            <div class="result-row"><span class="result-label">Estimated Corpus at Retirement</span><span class="result-value" id="nps-corpus">—</span></div>
+            <div class="result-row"><span class="result-label">Monthly Pension Estimate</span><span class="result-value" id="nps-pension">—</span></div>
+          </div>
+        </div>
+        <div class="card"><h4 style="font-weight:800;margin-bottom:14px;">NPS vs PPF — Quick Compare</h4>
+          <table style="width:100%;font-size:13px;border-collapse:collapse;">
+            <tr style="background:var(--bg);"><th style="padding:10px;text-align:left;"></th><th style="padding:10px;color:var(--green);">NPS</th><th style="padding:10px;color:var(--blue);">PPF</th></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;">Lock-in</td><td style="padding:10px;">Till age 60</td><td style="padding:10px;">15 years</td></tr>
+            <tr style="background:var(--bg);border-bottom:1px solid var(--border);"><td style="padding:10px;">Returns</td><td style="padding:10px;">~10-12% (market)</td><td style="padding:10px;">7.1% (fixed)</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;">Tax Status</td><td style="padding:10px;">EET (60% tax-free)</td><td style="padding:10px;">EEE (fully tax-free)</td></tr>
+            <tr style="background:var(--bg);border-bottom:1px solid var(--border);"><td style="padding:10px;">Extra 80CCD benefit</td><td style="padding:10px;color:var(--green);">✅ ₹50,000 extra</td><td style="padding:10px;color:var(--red);">❌ No</td></tr>
+            <tr><td style="padding:10px;">Risk</td><td style="padding:10px;">Medium (market risk)</td><td style="padding:10px;">Zero (govt backed)</td></tr>
+          </table>
+          <div class="alert alert-green" style="margin-top:16px;"><div class="alert-icon">💡</div><div><strong>Best strategy:</strong> Max out PPF (₹1.5L, covered in 80C) + invest ₹50K in NPS for extra 80CCD(1B) deduction = total ₹2L in tax-saving investments</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capital Gains -->
+    <div id="t-cg" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">Capital Gains Tax Calculator</h3>
+          <div class="input-group"><div class="input-label">Asset Type</div><select class="input-field" id="cg-type" onchange="calcCG()"><option value="equity">Equity Shares / Equity Mutual Funds</option><option value="debt">Debt Mutual Funds / Bonds</option><option value="property">Property / Real Estate</option><option value="gold">Gold / Jewellery</option></select></div>
+          <div class="input-group"><div class="input-label">Purchase Price (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="cg-buy" placeholder="Amount you paid" oninput="calcCG()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Sale Price (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="cg-sell" placeholder="Amount you received" oninput="calcCG()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Holding Period</div><select class="input-field" id="cg-hold" onchange="calcCG()"><option value="short">Short Term (Sold within 1 year for equity, 2 years for property)</option><option value="long">Long Term (Held more than above period)</option></select></div>
+          <div class="result-box" id="cg-result">
+            <div class="result-row"><span class="result-label">Capital Gain</span><span class="result-value" id="cg-gain">—</span></div>
+            <div class="result-row"><span class="result-label">Tax Type</span><span class="result-value" id="cg-taxtype">—</span></div>
+            <div class="result-row"><span class="result-label">Tax Rate</span><span class="result-value" id="cg-rate">—</span></div>
+            <div class="result-row"><span class="result-label">Tax Amount</span><span class="result-value" id="cg-tax">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--amber-light);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--amber);">Capital Gains — Key Rules</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px;">
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Equity LTCG ₹1.25L exempt:</strong> Long-term gains on equity/mutual funds — first ₹1.25 lakh is tax-free each year. Above that: 12.5% tax.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Tax Harvesting:</strong> If your equity LTCG is nearing ₹1.25L, sell and rebuy to "reset" the cost basis. Book profits tax-free each year!</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Set-off losses:</strong> Capital losses can be set off against gains. STCL can offset STCG and LTCG. LTCL can only offset LTCG.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Carry forward:</strong> Unabsorbed capital losses can be carried forward for 8 years.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gratuity -->
+    <div id="t-gratuity" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">Gratuity Calculator</h3>
+          <div class="alert alert-blue" style="margin-bottom:20px;"><div class="alert-icon">ℹ️</div><div><strong>Gratuity</strong> is paid by employer when you resign/retire after 5+ years of service. Formula: (Last Salary × 15/26) × Years of Service</div></div>
+          <div class="input-group"><div class="input-label">Last Basic Salary + DA (Monthly) <div class="tooltip-wrap"><div class="tooltip-icon">?</div><div class="tooltip-box">Take your last month's Basic Salary + Dearness Allowance (DA). HRA and other allowances are NOT included in gratuity calculation.</div></div></div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="gr-salary" placeholder="e.g. 50000" oninput="calcGratuity()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Years of Service</div><input type="number" class="input-field" id="gr-years" placeholder="e.g. 10" oninput="calcGratuity()"></div>
+          <div class="result-box" id="gr-result">
+            <div class="result-row"><span class="result-label">Gratuity Amount</span><span class="result-value" id="gr-amount">—</span></div>
+            <div class="result-row"><span class="result-label">Tax Exemption (Govt employee)</span><span class="result-value">Full Amount</span></div>
+            <div class="result-row"><span class="result-label">Tax Exemption (Private, covered by Act)</span><span class="result-value" id="gr-exempt">—</span></div>
+            <div class="result-row"><span class="result-label">Taxable Gratuity</span><span class="result-value" id="gr-taxable">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--green-pale);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--green);">Gratuity — Important Facts</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;">
+            <div style="padding:12px;background:white;border-radius:8px;">Minimum 5 years of service required. If you leave before 5 years, no gratuity.</div>
+            <div style="padding:12px;background:white;border-radius:8px;">Maximum tax-exempt gratuity: ₹20,00,000 (₹20 lakhs) for private sector employees covered under Gratuity Act.</div>
+            <div style="padding:12px;background:white;border-radius:8px;">If employer is NOT covered under Gratuity Act, exemption = Half month's salary × years (different formula).</div>
+            <div style="padding:12px;background:white;border-radius:8px;">Government employees get FULL gratuity tax-free with no upper limit.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMI Calculator -->
+    <div id="t-emi" class="tab-content">
+      <div class="grid-2" style="gap:32px;align-items:start;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;">Home Loan EMI + Tax Benefit Calculator</h3>
+          <div class="input-group"><div class="input-label">Loan Amount (₹)</div><div class="input-prefix"><span class="sym">₹</span><input type="number" class="input-field" id="emi-loan" placeholder="e.g. 5000000" oninput="calcEMI()" style="padding-left:32px;"></div></div>
+          <div class="input-group"><div class="input-label">Annual Interest Rate (%)</div><input type="number" class="input-field" id="emi-rate" placeholder="e.g. 8.5" oninput="calcEMI()"></div>
+          <div class="input-group"><div class="input-label">Loan Tenure (Years)</div><select class="input-field" id="emi-tenure" onchange="calcEMI()">
+            <option value="5">5 years</option><option value="10">10 years</option><option value="15">15 years</option><option value="20" selected>20 years</option><option value="25">25 years</option><option value="30">30 years</option>
+          </select></div>
+          <div class="result-box" id="emi-result">
+            <div class="result-row"><span class="result-label">Monthly EMI</span><span class="result-value" id="emi-monthly">—</span></div>
+            <div class="result-row"><span class="result-label">Total Amount Paid</span><span class="result-value" id="emi-total">—</span></div>
+            <div class="result-row"><span class="result-label">Total Interest Paid</span><span class="result-value" id="emi-interest">—</span></div>
+            <div class="result-row"><span class="result-label">Annual Interest (Year 1)</span><span class="result-value" id="emi-yr1-int">—</span></div>
+            <div class="result-row"><span class="result-label">Tax saved on interest (24b, 30% slab)</span><span class="result-value" id="emi-taxsave">—</span></div>
+            <div class="result-row"><span class="result-label">Principal in Year 1 (80C eligible)</span><span class="result-value" id="emi-principal">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="background:var(--blue-light);">
+          <h4 style="font-weight:800;margin-bottom:14px;color:var(--blue);">Home Loan Tax Benefits</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px;">
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Section 24(b):</strong> Deduct up to ₹2,00,000/year of home loan INTEREST on self-occupied property.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Section 80C:</strong> PRINCIPAL repayment is counted under 80C (within the ₹1.5L limit).</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>First-time buyer bonus:</strong> Section 80EEA — extra ₹1.5L deduction on interest if loan was taken between 2019-2022 and property value ≤ ₹45L.</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Let-out property:</strong> If you rent out the property, you can deduct the ENTIRE interest amount (no ₹2L cap)!</div>
+            <div style="padding:12px;background:white;border-radius:8px;"><strong>Joint loan advantage:</strong> If loan is joint with spouse, both can claim ₹2L interest + 80C principal deduction independently!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: DUE DATES ===== -->
+<div class="page" id="page-duedates">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">📅 Compliance Calendar</div>
+      <h1>Tax Due Dates & Deadlines — FY 2024–25</h1>
+      <p>Every important date with countdown, penalty warnings, and plain-language explanations</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+    <div class="alert alert-red" style="background:var(--red-light);border:1px solid rgba(214,48,49,0.2);color:var(--body);">
+      <div class="alert-icon">⚠️</div>
+      <div><strong style="color:var(--red);">Late filing penalty:</strong> Missing ITR deadline costs ₹5,000 under Section 234F. Missing advance tax can cost 1% interest per month. Never miss these dates!</div>
+    </div>
+
+    <div class="grid-2" style="gap:32px;align-items:start;">
+      <div>
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:20px;color:var(--ink);">📌 Income Tax Deadlines</h3>
+        <div id="itr-dates"></div>
+      </div>
+      <div>
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:20px;color:var(--ink);">🧾 GST Deadlines</h3>
+        <div id="gst-dates"></div>
+        <h3 style="font-size:20px;font-weight:800;margin:28px 0 20px;color:var(--ink);">📋 TDS Deadlines</h3>
+        <div id="tds-dates"></div>
+      </div>
+    </div>
+
+    <!-- Penalty Guide -->
+    <div style="margin-top:48px;">
+      <h3 style="font-size:22px;font-weight:900;margin-bottom:20px;color:var(--ink);">⚡ Penalty Guide — What Happens If You Miss Deadlines?</h3>
+      <div class="grid-3" style="gap:20px;">
+        <div class="card" style="border-top:4px solid var(--red);">
+          <div style="font-size:24px;margin-bottom:10px;">😰</div>
+          <h4 style="font-weight:800;color:var(--ink);margin-bottom:8px;">Late ITR Filing</h4>
+          <div style="font-size:13.5px;line-height:1.6;color:var(--body);">
+            <div style="margin-bottom:8px;padding:8px;background:var(--red-light);border-radius:6px;"><strong>Penalty:</strong> ₹5,000 if income > ₹5L. ₹1,000 if income ≤ ₹5L. Section 234F.</div>
+            <div style="margin-bottom:8px;padding:8px;background:var(--amber-light);border-radius:6px;"><strong>Interest:</strong> 1% per month on tax due under Section 234A</div>
+            <div style="padding:8px;background:var(--red-light);border-radius:6px;"><strong>Loss of benefits:</strong> Cannot carry forward capital losses if filed late!</div>
+          </div>
+        </div>
+        <div class="card" style="border-top:4px solid var(--amber);">
+          <div style="font-size:24px;margin-bottom:10px;">⏰</div>
+          <h4 style="font-weight:800;color:var(--ink);margin-bottom:8px;">Advance Tax Default</h4>
+          <div style="font-size:13.5px;line-height:1.6;color:var(--body);">
+            <div style="margin-bottom:8px;padding:8px;background:var(--amber-light);border-radius:6px;"><strong>Who must pay:</strong> If your tax liability exceeds ₹10,000/year (after TDS)</div>
+            <div style="margin-bottom:8px;padding:8px;background:var(--amber-light);border-radius:6px;"><strong>Interest 234B:</strong> 1% per month if paid after March 31</div>
+            <div style="padding:8px;background:var(--amber-light);border-radius:6px;"><strong>Interest 234C:</strong> 1% per month for short/delayed payment of each instalment</div>
+          </div>
+        </div>
+        <div class="card" style="border-top:4px solid var(--blue);">
+          <div style="font-size:24px;margin-bottom:10px;">📋</div>
+          <h4 style="font-weight:800;color:var(--ink);margin-bottom:8px;">Late TDS / GST</h4>
+          <div style="font-size:13.5px;line-height:1.6;color:var(--body);">
+            <div style="margin-bottom:8px;padding:8px;background:var(--blue-light);border-radius:6px;"><strong>TDS late deposit:</strong> 1.5% per month interest (not a penalty, it's interest)</div>
+            <div style="margin-bottom:8px;padding:8px;background:var(--blue-light);border-radius:6px;"><strong>TDS late return:</strong> ₹200/day late fee under Section 234E</div>
+            <div style="padding:8px;background:var(--blue-light);border-radius:6px;"><strong>GST late filing:</strong> ₹50/day (₹20 for nil returns) + 18% interest on tax</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: LEARN ===== -->
+<div class="page" id="page-learn">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">📚 Tax Education</div>
+      <h1>Tax Glossary & Beginner Guides</h1>
+      <p>Every tax term explained in simple words with real examples. No prior knowledge needed.</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+    <div class="grid-2" style="gap:40px;align-items:start;">
+      <div>
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="glossary-search" placeholder="Search any term (e.g. TDS, Form 26AS, 80C...)" oninput="searchGlossary()">
+        </div>
+        <div id="glossary-container"></div>
+      </div>
+      <div>
+        <h3 style="font-size:20px;font-weight:900;margin-bottom:20px;color:var(--ink);">📖 Beginner Guides</h3>
+        <div id="guides-container"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: CHECKLIST ===== -->
+<div class="page" id="page-checklist">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">✅ Document Checklist</div>
+      <h1>Know Exactly What Documents You Need</h1>
+      <p>Interactive checklist — tick off documents as you collect them. Progress tracking included.</p>
+    </div>
+  </div>
+  <div class="container section-lg">
+    <div class="grid-2" style="gap:32px;align-items:start;">
+      <div>
+        <div class="input-group"><div class="input-label">Select Filing Type</div>
+        <select class="input-field" id="checklist-type" onchange="showChecklist()">
+          <option value="itr1">ITR-1 — Salaried Employee (Simple)</option>
+          <option value="itr2">ITR-2 — Capital Gains / Multiple Properties</option>
+          <option value="itr3">ITR-3 — Business Income / Freelancer</option>
+          <option value="itr4">ITR-4 — Presumptive Business</option>
+          <option value="gst_reg">GST Registration</option>
+          <option value="company">Company Incorporation (Pvt Ltd)</option>
+          <option value="llp">LLP Registration</option>
+          <option value="audit">Statutory Audit</option>
+        </select></div>
+
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <h3 id="checklist-title" style="font-size:18px;font-weight:900;color:var(--ink);"></h3>
+            <button onclick="resetChecklist()" class="btn btn-sm btn-outline">Reset</button>
+          </div>
+          <div class="progress-track" style="margin-bottom:8px;"><div class="progress-fill" id="checklist-fill" style="width:0%"></div></div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:20px;" id="checklist-count">0 of 0 documents collected</div>
+          <div id="checklist-items"></div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="background:var(--green-pale);border:2px solid var(--green);">
+          <h4 style="font-weight:800;color:var(--green);margin-bottom:14px;">📁 Where to Find These Documents?</h4>
+          <div id="where-to-find" style="font-size:13.5px;line-height:1.6;"></div>
+        </div>
+        <div class="card" style="margin-top:20px;">
+          <h4 style="font-weight:800;color:var(--ink);margin-bottom:14px;">⚡ Quick Tips</h4>
+          <div id="filing-tips" style="font-size:13.5px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Widget -->
+<button class="fab-chat" onclick="toggleChat()" id="fab">💬</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="chat-head-info">
+      <div class="chat-head-avatar">🤖</div>
+      <div><div class="chat-head-name">TaxBot — AI Assistant</div><div class="chat-head-status">● Online · Knows Indian Tax Laws</div></div>
+    </div>
+    <button class="chat-close-btn" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">Hi! 👋 I'm TaxBot. Ask me anything about Indian taxes — ITR, GST, TDS, deductions, deadlines. I explain everything simply!</div>
+  </div>
+  <div class="chat-quick" id="chatQuick">
+    <button class="chat-quick-btn" onclick="quickChat('What is 80C?')">What is 80C?</button>
+    <button class="chat-quick-btn" onclick="quickChat('Old vs New Regime?')">Old vs New?</button>
+    <button class="chat-quick-btn" onclick="quickChat('ITR deadline?')">ITR deadline?</button>
+    <button class="chat-quick-btn" onclick="quickChat('What is TDS?')">What is TDS?</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-inp" id="chatInp" placeholder="Ask anything about tax..." onkeypress="chatEnter(event)">
+    <button class="chat-send-btn" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">₹ TaxSimple India</div>
+        <div class="footer-brand-desc">Free, unbiased tax education and tools for every Indian taxpayer. No registrations, no hidden charges, no ads trying to sell you products.</div>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="background:rgba(255,255,255,0.1);padding:5px 12px;border-radius:6px;font-size:12px;">🆓 100% Free</span>
+          <span style="background:rgba(255,255,255,0.1);padding:5px 12px;border-radius:6px;font-size:12px;">🔒 No Login Needed</span>
+          <span style="background:rgba(255,255,255,0.1);padding:5px 12px;border-radius:6px;font-size:12px;">📱 Mobile Friendly</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Tools</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showPage('calculator')">Income Tax Calculator</a></li>
+          <li><a href="#" onclick="showPage('tools')">GST Calculator</a></li>
+          <li><a href="#" onclick="showPage('tools')">HRA Calculator</a></li>
+          <li><a href="#" onclick="showPage('tools')">PPF Calculator</a></li>
+          <li><a href="#" onclick="showPage('tools')">TDS Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Learn</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showPage('savetax')">How to Save Tax</a></li>
+          <li><a href="#" onclick="showPage('loopholes')">Legal Loopholes</a></li>
+          <li><a href="#" onclick="showPage('learn')">Tax Glossary</a></li>
+          <li><a href="#" onclick="showPage('duedates')">Due Dates</a></li>
+          <li><a href="#" onclick="showPage('checklist')">Document Checklist</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Important Links</div>
+        <ul class="footer-links">
+          <li><a href="https://www.incometax.gov.in" target="_blank">Income Tax Portal ↗</a></li>
+          <li><a href="https://www.gst.gov.in" target="_blank">GST Portal ↗</a></li>
+          <li><a href="https://www.epfindia.gov.in" target="_blank">EPFO Portal ↗</a></li>
+          <li><a href="https://npscra.nsdl.co.in" target="_blank">NPS Portal ↗</a></li>
+          <li><a href="https://www.mca.gov.in" target="_blank">MCA Portal ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 TaxSimple India · For Educational Purposes Only</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);">FY 2024–25 | AY 2025–26 | India</div>
+    </div>
+    <div class="footer-disclaimer">⚠️ Disclaimer: All information on this website is for general educational and informational purposes only. It does not constitute professional tax advice. Tax laws change frequently — please verify with an official source or a qualified CA before making financial decisions. We are not responsible for any errors or omissions.</div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelector(`[data-page="${id}"]`)?.classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'savetax') renderSavingCards();
+  if (id === 'loopholes') renderLoopholes();
+  if (id === 'duedates') renderDueDates();
+  if (id === 'learn') renderLearn();
+  if (id === 'checklist') showChecklist();
+}
+
+function switchTab(group, id) {
+  const parent = document.getElementById(id)?.closest('.page, [class*="container"]') || document;
+  if (group === 'slabs') {
+    ['new-slab','old-slab'].forEach(t => { document.getElementById(t).classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    const tabs = document.querySelectorAll('#page-home .tab-btn');
+    tabs.forEach((t,i) => t.classList.toggle('active', i === (['new-slab','old-slab'].indexOf(id))));
+  } else if (group === 'tools') {
+    document.querySelectorAll('#page-tools .tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('#page-tools .tab-btn').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+}
+
+// ============================================================
+// FORMATTERS
+// ============================================================
+const fmt = n => '₹' + Math.abs(Math.round(n)).toLocaleString('en-IN');
+const fmtPct = n => n.toFixed(1) + '%';
+
+// ============================================================
+// TAX ENGINE
+// ============================================================
+function taxOldRegime(taxable, age) {
+  let basic = age === 'below60' ? 250000 : age === '60to80' ? 300000 : 500000;
+  let t = 0;
+  if (taxable <= basic) t = 0;
+  else if (taxable <= 500000) t = (taxable - basic) * 0.05;
+  else if (taxable <= 1000000) t = (500000 - basic) * 0.05 + (taxable - 500000) * 0.2;
+  else t = (500000 - basic) * 0.05 + 500000 * 0.2 + (taxable - 1000000) * 0.3;
+  if (taxable <= 500000) t = 0; // 87A rebate
+  let sc = 0;
+  if (taxable > 5000000 && taxable <= 10000000) sc = t * 0.1;
+  else if (taxable > 10000000 && taxable <= 20000000) sc = t * 0.15;
+  else if (taxable > 20000000 && taxable <= 50000000) sc = t * 0.25;
+  else if (taxable > 50000000) sc = t * 0.37;
+  return (t + sc) * 1.04; // cess 4%
+}
+
+function taxNewRegime(taxable) {
+  let t = 0;
+  if (taxable <= 300000) t = 0;
+  else if (taxable <= 700000) t = (taxable - 300000) * 0.05;
+  else if (taxable <= 1000000) t = 20000 + (taxable - 700000) * 0.1;
+  else if (taxable <= 1200000) t = 50000 + (taxable - 1000000) * 0.15;
+  else if (taxable <= 1500000) t = 80000 + (taxable - 1200000) * 0.2;
+  else t = 140000 + (taxable - 1500000) * 0.3;
+  if (taxable <= 700000) t = 0; // 87A rebate
+  return t * 1.04; // cess
+}
+
+function hraExemption(basic, hraRecv, rentPaid, metro) {
+  let pct = metro === 'metro' ? 0.5 : 0.4;
+  let a = hraRecv;
+  let b = basic * pct;
+  let c = Math.max(0, rentPaid - basic * 0.1);
+  return Math.min(a, b, c);
+}
+
+// ============================================================
+// QUICK ESTIMATE (HOME PAGE)
+// ============================================================
+function quickEstimate() {
+  const inc = parseFloat(document.getElementById('quick-income').value) || 0;
+  if (!inc) { document.getElementById('quick-result').style.display = 'none'; return; }
+  const stdNew = 75000, stdOld = 50000;
+  const taxableOld = Math.max(0, inc - stdOld - 150000 - 25000); // assume basic deductions
+  const taxableNew = Math.max(0, inc - stdNew);
+  const taxOld = taxOldRegime(taxableOld, 'below60');
+  const taxNew = taxNewRegime(taxableNew);
+  document.getElementById('qr-old').textContent = fmt(taxOld);
+  document.getElementById('qr-new').textContent = fmt(taxNew);
+  const oldBetter = taxOld < taxNew;
+  document.getElementById('qr-old-box').className = 'regime-box' + (oldBetter ? ' winner' : '');
+  document.getElementById('qr-new-box').className = 'regime-box' + (!oldBetter ? ' winner' : '');
+  document.getElementById('qr-old-win').style.display = oldBetter ? 'inline-flex' : 'none';
+  document.getElementById('qr-new-win').style.display = !oldBetter ? 'inline-flex' : 'none';
+  const saving = Math.abs(taxOld - taxNew);
+  const msg = document.getElementById('qr-msg');
+  if (oldBetter) { msg.style.cssText = 'margin-top:14px;padding:12px 16px;border-radius:8px;background:var(--green-light);color:var(--green);font-size:13.5px;font-weight:600;'; msg.textContent = `✅ Old Regime saves you ${fmt(saving)} — but you need investments/deductions to qualify`; }
+  else { msg.style.cssText = 'margin-top:14px;padding:12px 16px;border-radius:8px;background:var(--blue-light);color:var(--blue);font-size:13.5px;font-weight:600;'; msg.textContent = `✅ New Regime saves you ${fmt(saving)} — simpler, no investment proofs needed`; }
+  document.getElementById('quick-result').style.display = 'block';
+}
+
+// ============================================================
+// CALCULATOR WIZARD
+// ============================================================
+let currentStep = 1;
+
+function goStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById('step' + i).style.display = i === n ? 'block' : 'none';
+    document.getElementById('step' + i).classList.toggle('active', i === n);
+    const ws = document.getElementById('ws' + i);
+    if (i < n) { ws.classList.add('done'); ws.classList.remove('active'); }
+    else if (i === n) { ws.classList.add('active'); ws.classList.remove('done'); }
+    else { ws.classList.remove('done', 'active'); }
+  }
+  currentStep = n;
+  calcLive();
+}
+
+function toggleHRA() {
+  document.getElementById('hra-fields').style.display = document.getElementById('c-hra-yn').value === 'yes' ? 'block' : 'none';
+}
+
+function calcLive() {
+  const salary = parseFloat(document.getElementById('c-salary').value) || 0;
+  const other = parseFloat(document.getElementById('c-other').value) || 0;
+  const bonus = parseFloat(document.getElementById('c-bonus').value) || 0;
+  const age = document.getElementById('c-age').value;
+  const s80c = Math.min(parseFloat(document.getElementById('c-80c').value) || 0, 150000);
+  const s80d = Math.min(parseFloat(document.getElementById('c-80d').value) || 0, 75000);
+  const nps = Math.min(parseFloat(document.getElementById('c-nps').value) || 0, 50000);
+  const hl = Math.min(parseFloat(document.getElementById('c-hl').value) || 0, 200000);
+  const edu = parseFloat(document.getElementById('c-edu').value) || 0;
+  const g80 = (parseFloat(document.getElementById('c-80g').value) || 0) * 0.5;
+  const gross = salary + other + bonus;
+  const totalDedOld = 50000 + s80c + s80d + nps + hl + edu + g80; // std ded + investments
+  const taxableOld = Math.max(0, gross - totalDedOld);
+  const taxableNew = Math.max(0, gross - 75000);
+  const taxOld = taxOldRegime(taxableOld, age);
+  const taxNew = taxNewRegime(taxableNew);
+  document.getElementById('live-gross').textContent = fmt(gross);
+  document.getElementById('live-ded').textContent = fmt(totalDedOld);
+  document.getElementById('live-taxable-old').textContent = fmt(taxableOld);
+  document.getElementById('live-taxable-new').textContent = fmt(taxableNew);
+  document.getElementById('live-tax-old').textContent = fmt(taxOld);
+  document.getElementById('live-tax-new').textContent = fmt(taxNew);
+  const rec = document.getElementById('live-rec');
+  if (taxOld <= taxNew) { rec.textContent = '✅ Old Regime looks better for you'; rec.style.background = 'var(--green-light)'; rec.style.color = 'var(--green)'; }
+  else { rec.textContent = '✅ New Regime looks better for you'; rec.style.background = 'var(--blue-light)'; rec.style.color = 'var(--blue)'; }
+  // Missed savings
+  let missed = [];
+  if (s80c < 150000) missed.push(`💡 You can invest ${fmt(150000 - s80c)} more in 80C (PPF, ELSS, LIC) to save ${fmt((150000-s80c)*0.3)} more`);
+  if (s80d === 0) missed.push(`💡 Get health insurance! 80D saves up to ${fmt(25000*0.3)} on premium`);
+  if (nps === 0) missed.push(`💡 Invest ₹50,000 in NPS (80CCD) for extra ${fmt(50000*0.3)} tax saving`);
+  if (hl === 0 && salary > 500000) missed.push(`💡 Home loan interest saves up to ${fmt(200000*0.3)} under Section 24(b)`);
+  document.getElementById('missed-savings').innerHTML = missed.length ? missed.join('<br><br>') : '✅ Great! You seem to be utilizing deductions well.';
+}
+
+function fullCalc() {
+  calcLive();
+  const salary = parseFloat(document.getElementById('c-salary').value) || 0;
+  const other = parseFloat(document.getElementById('c-other').value) || 0;
+  const bonus = parseFloat(document.getElementById('c-bonus').value) || 0;
+  const age = document.getElementById('c-age').value;
+  const s80c = Math.min(parseFloat(document.getElementById('c-80c').value) || 0, 150000);
+  const s80d = Math.min(parseFloat(document.getElementById('c-80d').value) || 0, 75000);
+  const nps = Math.min(parseFloat(document.getElementById('c-nps').value) || 0, 50000);
+  const hl = Math.min(parseFloat(document.getElementById('c-hl').value) || 0, 200000);
+  const edu = parseFloat(document.getElementById('c-edu').value) || 0;
+  const g80 = (parseFloat(document.getElementById('c-80g').value) || 0) * 0.5;
+  const hraYn = document.getElementById('c-hra-yn').value;
+  let hraEx = 0;
+  if (hraYn === 'yes') {
+    const basic = salary * 0.4; // estimate basic as 40% of CTC
+    const hraR = parseFloat(document.getElementById('c-hra-rec').value) || 0;
+    const rent = parseFloat(document.getElementById('c-rent').value) || 0;
+    const city = document.getElementById('c-city').value;
+    hraEx = hraExemption(basic, hraR, rent, city);
+  }
+  const gross = salary + other + bonus;
+  const totalDedOld = 50000 + s80c + s80d + nps + hl + edu + g80 + hraEx;
+  const taxableOld = Math.max(0, gross - totalDedOld);
+  const taxableNew = Math.max(0, gross - 75000);
+  const taxOld = taxOldRegime(taxableOld, age);
+  const taxNew = taxNewRegime(taxableNew);
+  const monthlyOld = taxOld / 12, monthlyNew = taxNew / 12;
+  const oldBetter = taxOld <= taxNew;
+  const html = `
+    <div class="regime-compare">
+      <div class="regime-box ${oldBetter ? 'winner' : ''}">
+        <div class="regime-name">Old Regime ${oldBetter ? '<span class="badge badge-green">✓ Better for you</span>' : ''}</div>
+        <div class="regime-tax">${fmt(taxOld)}</div>
+        <div class="regime-save">Monthly: ${fmt(monthlyOld)}</div>
+      </div>
+      <div class="regime-box ${!oldBetter ? 'winner' : ''}">
+        <div class="regime-name">New Regime ${!oldBetter ? '<span class="badge badge-green">✓ Better for you</span>' : ''}</div>
+        <div class="regime-tax">${fmt(taxNew)}</div>
+        <div class="regime-save">Monthly: ${fmt(monthlyNew)}</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Detailed Breakdown (Old Regime)</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        ${[
+          ['Gross Income', fmt(gross)],
+          ['Standard Deduction', fmt(50000)],
+          ['Section 80C (investments)', fmt(s80c)],
+          ['Section 80D (health insurance)', fmt(s80d)],
+          ['NPS — 80CCD(1B)', fmt(nps)],
+          ['Home Loan Interest — 24(b)', fmt(hl)],
+          ['HRA Exemption', fmt(hraEx)],
+          ['Education Loan Interest', fmt(edu)],
+          ['Donations 80G (50%)', fmt(g80)],
+          ['= Taxable Income', fmt(taxableOld)],
+          ['= Final Tax + Cess', fmt(taxOld)],
+        ].map((r,i) => `<div style="display:flex;justify-content:space-between;padding:9px 12px;background:${i%2===0?'var(--bg)':'white'};font-size:13.5px;border-radius:${i===10?'0 0 8px 8px':'0'};${i===10?'font-weight:800;color:var(--green);':''}">`+
+          `<span style="color:var(--muted)">${r[0]}</span><span style="font-weight:600">${r[1]}</span></div>`).join('')}
+      </div>
+    </div>
+    <div class="alert alert-${oldBetter?'green':'blue'}" style="margin-top:20px;">
+      <div class="alert-icon">${oldBetter?'✅':'✅'}</div>
+      <div><strong>${oldBetter?'Choose Old Regime':'Choose New Regime'}</strong> — You save ${fmt(Math.abs(taxOld-taxNew))} compared to the other option. ${oldBetter?'Make sure to submit investment proofs to your employer.':'No paperwork needed — new regime is automatic.'}</div>
+    </div>`;
+  document.getElementById('calc-results-area').innerHTML = html;
+}
+
+// ============================================================
+// TOOLS CALCULATORS
+// ============================================================
+function calcHRA() {
+  const basic = parseFloat(document.getElementById('hra-basic').value) || 0;
+  const recv = parseFloat(document.getElementById('hra-recv').value) || 0;
+  const rent = parseFloat(document.getElementById('hra-rent').value) || 0;
+  const city = document.getElementById('hra-city').value;
+  if (!basic || !recv) return;
+  const pct = city === 'metro' ? 0.5 : 0.4;
+  const a = recv, b = basic * pct, c = Math.max(0, rent - basic * 0.1);
+  const exempt = Math.min(a, b, c);
+  document.getElementById('hr1').textContent = fmt(a);
+  document.getElementById('hr2').textContent = fmt(b) + ` (${pct*100}% of Basic)`;
+  document.getElementById('hr3').textContent = fmt(c) + ' (Rent - 10% Basic)';
+  document.getElementById('hr4').textContent = fmt(exempt);
+  document.getElementById('hr5').textContent = fmt(Math.max(0, recv - exempt));
+  document.getElementById('hra-result').classList.add('show');
+}
+
+function calcGST() {
+  const amt = parseFloat(document.getElementById('gst-amt').value) || 0;
+  const rate = parseFloat(document.getElementById('gst-rate').value);
+  const type = document.getElementById('gst-type').value;
+  let base, gst;
+  if (type === 'excl') { base = amt; gst = amt * rate / 100; }
+  else { base = amt / (1 + rate/100); gst = amt - base; }
+  document.getElementById('gst-base').textContent = fmt(base);
+  document.getElementById('gst-cgst').textContent = fmt(gst/2);
+  document.getElementById('gst-sgst').textContent = fmt(gst/2);
+  document.getElementById('gst-total').textContent = fmt(gst);
+  document.getElementById('gst-invoice').textContent = fmt(base + gst);
+  document.getElementById('gst-result').classList.add('show');
+}
+
+function calcTDS() {
+  const typeVal = document.getElementById('tds-type').value;
+  const amt = parseFloat(document.getElementById('tds-amt').value) || 0;
+  const pan = document.getElementById('tds-pan').value;
+  const parts = typeVal.split('_');
+  const sec = parts[0], normalRate = parseFloat(parts[1]);
+  const rate = pan === 'no' ? Math.max(20, normalRate) : normalRate;
+  const tds = amt * rate / 100;
+  document.getElementById('tds-sec').textContent = 'Section ' + sec;
+  document.getElementById('tds-rate').textContent = rate + '%' + (pan === 'no' ? ' (higher rate - no PAN)' : '');
+  document.getElementById('tds-amount').textContent = fmt(tds);
+  document.getElementById('tds-net').textContent = fmt(Math.max(0, amt - tds));
+  document.getElementById('tds-result').classList.add('show');
+}
+
+function calcPPF() {
+  const inv = parseFloat(document.getElementById('ppf-inv').value) || 0;
+  const rate = (parseFloat(document.getElementById('ppf-rate').value) || 7.1) / 100;
+  const years = parseInt(document.getElementById('ppf-years').value) || 15;
+  let corpus = 0;
+  for (let y = 0; y < years; y++) corpus = (corpus + inv) * (1 + rate);
+  const totalInv = inv * years;
+  const interest = corpus - totalInv;
+  const taxSaved = Math.min(inv, 150000) * 0.3 * years;
+  document.getElementById('ppf-invested').textContent = fmt(totalInv);
+  document.getElementById('ppf-interest').textContent = fmt(interest);
+  document.getElementById('ppf-taxsaved').textContent = fmt(taxSaved);
+  document.getElementById('ppf-maturity').textContent = fmt(corpus);
+  document.getElementById('ppf-result').classList.add('show');
+}
+
+function calcNPS() {
+  const contrib = parseFloat(document.getElementById('nps-contrib').value) || 0;
+  const ret = (parseFloat(document.getElementById('nps-return').value) || 10) / 100;
+  const years = parseInt(document.getElementById('nps-years').value) || 0;
+  const slab = parseFloat(document.getElementById('nps-slab').value) / 100;
+  const clampContrib = Math.min(contrib, 50000);
+  const taxSave = clampContrib * slab * 1.04;
+  let corpus = 0;
+  for (let y = 0; y < years; y++) corpus = (corpus + contrib) * (1 + ret);
+  const annuityCorpus = corpus * 0.4;
+  const monthlyPension = (annuityCorpus * 0.06) / 12;
+  document.getElementById('nps-taxsave').textContent = fmt(taxSave) + '/year';
+  document.getElementById('nps-total-inv').textContent = fmt(contrib * years);
+  document.getElementById('nps-corpus').textContent = fmt(corpus);
+  document.getElementById('nps-pension').textContent = fmt(monthlyPension) + '/month';
+  document.getElementById('nps-result').classList.add('show');
+}
+
+function calcCG() {
+  const type = document.getElementById('cg-type').value;
+  const buy = parseFloat(document.getElementById('cg-buy').value) || 0;
+  const sell = parseFloat(document.getElementById('cg-sell').value) || 0;
+  const hold = document.getElementById('cg-hold').value;
+  const gain = sell - buy;
+  let taxType, rate, tax;
+  if (type === 'equity') {
+    if (hold === 'short') { taxType = 'STCG (Short Term)'; rate = 20; tax = gain * 0.2; }
+    else { taxType = 'LTCG (Long Term)'; rate = 12.5; tax = Math.max(0, gain - 125000) * 0.125; }
+  } else if (type === 'debt') {
+    taxType = hold === 'short' ? 'STCG — Slab Rate' : 'LTCG (Long Term)';
+    rate = hold === 'short' ? 30 : 20;
+    tax = gain * rate / 100;
+  } else if (type === 'property') {
+    if (hold === 'short') { taxType = 'STCG — Slab Rate'; rate = 30; tax = gain * 0.3; }
+    else { taxType = 'LTCG (Long Term)'; rate = 20; tax = gain * 0.2; }
+  } else {
+    if (hold === 'short') { taxType = 'STCG — Slab Rate'; rate = 30; tax = gain * 0.3; }
+    else { taxType = 'LTCG (Long Term)'; rate = 20; tax = gain * 0.2; }
+  }
+  document.getElementById('cg-gain').textContent = fmt(gain);
+  document.getElementById('cg-taxtype').textContent = taxType;
+  document.getElementById('cg-rate').textContent = rate + '%';
+  document.getElementById('cg-tax').textContent = fmt(Math.max(0, tax));
+  document.getElementById('cg-result').classList.add('show');
+}
+
+function calcGratuity() {
+  const sal = parseFloat(document.getElementById('gr-salary').value) || 0;
+  const years = parseFloat(document.getElementById('gr-years').value) || 0;
+  const gratuity = (sal * 15 / 26) * years;
+  const exemptLimit = 2000000;
+  const exempt = Math.min(gratuity, exemptLimit);
+  document.getElementById('gr-amount').textContent = fmt(gratuity);
+  document.getElementById('gr-exempt').textContent = fmt(exempt) + ' (max ₹20L)';
+  document.getElementById('gr-taxable').textContent = fmt(Math.max(0, gratuity - exempt));
+  document.getElementById('gr-result').classList.add('show');
+}
+
+function calcEMI() {
+  const loan = parseFloat(document.getElementById('emi-loan').value) || 0;
+  const rateAnnual = parseFloat(document.getElementById('emi-rate').value) || 0;
+  const years = parseInt(document.getElementById('emi-tenure').value) || 20;
+  const r = rateAnnual / 12 / 100;
+  const n = years * 12;
+  const emi = r === 0 ? loan/n : loan * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+  const total = emi * n;
+  const interest = total - loan;
+  const yr1Interest = loan * rateAnnual / 100 * 0.95; // approx year 1 interest
+  const yr1Principal = emi * 12 - yr1Interest;
+  document.getElementById('emi-monthly').textContent = fmt(emi);
+  document.getElementById('emi-total').textContent = fmt(total);
+  document.getElementById('emi-interest').textContent = fmt(interest);
+  document.getElementById('emi-yr1-int').textContent = fmt(yr1Interest);
+  document.getElementById('emi-taxsave').textContent = fmt(Math.min(200000, yr1Interest) * 0.3);
+  document.getElementById('emi-principal').textContent = fmt(yr1Principal);
+  document.getElementById('emi-result').classList.add('show');
+}
+
+// ============================================================
+// DUE DATES
+// ============================================================
+function renderDueDates() {
+  const today = new Date();
+  function daysTo(d) { return Math.ceil((new Date(d) - today) / 86400000); }
+  function urgency(d) { const days = daysTo(d); return days < 0 ? 'overdue' : days <= 7 ? 'urgent' : days <= 30 ? 'warning' : 'normal'; }
+  function card(day, mon, title, desc, d) {
+    const urg = urgency(d), days = daysTo(d);
+    const countLabel = days < 0 ? `<span style="color:var(--red);font-size:12px;">Overdue by ${-days}d</span>` : `<span style="color:${days<=7?'var(--red)':days<=30?'var(--amber)':'var(--green)'};font-size:12px;">${days} days left</span>`;
+    return `<div class="due-date-card ${urg}">
+      <div class="due-date-badge"><div class="day">${day}</div><div class="month">${mon}</div></div>
+      <div style="flex:1"><div class="due-date-title">${title}</div><div class="due-date-desc">${desc}</div></div>
+      <div class="due-date-countdown">${countLabel}</div>
+    </div>`;
+  }
+  document.getElementById('itr-dates').innerHTML = [
+    card('31','Mar','Advance Tax Q4 Payment','Pay 100% of your estimated tax for FY 2024-25','2025-03-15'),
+    card('31','Jul','ITR Filing Deadline','File Income Tax Return for FY 2024-25 (AY 2025-26). Penalty ₹5,000 after this.','2025-07-31'),
+    card('31','Oct','ITR Filing (Audit cases)','For those requiring tax audit under Section 44AB','2025-10-31'),
+    card('31','Dec','Belated / Revised ITR','Last date to file belated or revised ITR. After this, no option!','2025-12-31'),
+    card('15','Jun','Advance Tax Q1','Pay 15% of annual advance tax','2025-06-15'),
+    card('15','Sep','Advance Tax Q2','Pay 45% cumulative of annual advance tax','2025-09-15'),
+    card('15','Dec','Advance Tax Q3','Pay 75% cumulative of annual advance tax','2025-12-15'),
+  ].join('');
+
+  document.getElementById('gst-dates').innerHTML = [
+    card('20','Jan','GSTR-3B (Dec 2024)','Monthly GST summary return with tax payment','2025-01-20'),
+    card('11','Jan','GSTR-1 (Dec 2024)','Outward supply details filing','2025-01-11'),
+    card('20','Feb','GSTR-3B (Jan 2025)','Monthly GST summary return','2025-02-20'),
+    card('31','Dec','GSTR-9 Annual Return','GST annual return for FY 2024-25','2025-12-31'),
+  ].join('');
+
+  document.getElementById('tds-dates').innerHTML = [
+    card('7','Jan','TDS Deposit (Dec 2024)','Deposit TDS deducted in December 2024','2025-01-07'),
+    card('31','Jan','TDS Return Q3','File TDS return (24Q/26Q) for Oct-Dec quarter','2025-01-31'),
+    card('31','May','TDS Return Q4','File TDS return for Jan-Mar quarter. Issue Form 16 by June 15','2025-05-31'),
+    card('15','Jun','Issue Form 16','Issue Form 16 to employees for FY 2024-25','2025-06-15'),
+  ].join('');
+}
+
+// ============================================================
+// SAVING CARDS DATA
+// ============================================================
+const SAVINGS = [
+  { cat:'investments', icon:'🏦', title:'Section 80C — The Big One', sub:'Most popular tax saving bucket', saving:'Save up to ₹46,800', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> The government allows you to reduce your taxable income by up to ₹1,50,000 per year if you invest in specific instruments.</p><p style="margin-bottom:12px"><strong>Simple explanation:</strong> If you earn ₹10 lakh and invest ₹1.5 lakh in 80C options, you only pay tax on ₹8.5 lakh. At 20% slab, that's ₹30,000 saved!</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;"><strong>What you can invest in:</strong><ul style="margin:8px 0 0 16px;line-height:1.8;font-size:13px;"><li><strong>PPF (Public Provident Fund)</strong> — Government-backed, 7.1% tax-free returns</li><li><strong>ELSS Mutual Funds</strong> — Market returns + 3-year lock-in (shortest lock-in!)</li><li><strong>EPF</strong> — Your employer PF contribution counts automatically</li><li><strong>LIC Premium</strong> — Life insurance premium</li><li><strong>NSC (National Savings Certificate)</strong> — Post office scheme</li><li><strong>5-Year Bank FD</strong> — Tax-saving fixed deposit</li><li><strong>Home Loan Principal repayment</strong> — Yes, this counts!</li><li><strong>Children's Tuition Fees</strong> — School fees for up to 2 children</li><li><strong>Sukanya Samriddhi</strong> — For daughter's future</li></ul></div>` },
+  { cat:'insurance', icon:'🏥', title:'Section 80D — Health Insurance', sub:'Save on medical insurance premiums', saving:'Save up to ₹23,400', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> Premium you pay for health insurance is deducted from your income — you're rewarded for protecting yourself.</p><p style="margin-bottom:12px"><strong>How much?</strong> Up to ₹25,000 for yourself + spouse + children. An EXTRA ₹25,000 for parents (₹50,000 if parents are senior citizens). So maximum is ₹75,000!</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;"><strong>Limits at a glance:</strong><ul style="margin:8px 0 0 16px;line-height:1.8;font-size:13px;"><li>Self + Spouse + Children (below 60): ₹25,000</li><li>Parents (below 60): ₹25,000</li><li>Parents (60+, Senior Citizen): ₹50,000</li><li>No insurance but parents 80+: Can claim ₹50,000 for medical bills</li></ul></div><p style="font-size:13px;color:var(--muted);">💡 Even basic health cover for parents gives you a deduction. Don't skip this!</p>` },
+  { cat:'investments', icon:'🎯', title:'Section 80CCD(1B) — NPS Extra Deduction', sub:'₹50,000 over and above 80C limit!', saving:'Save up to ₹15,600 EXTRA', detail:`<p style="margin-bottom:12px"><strong>The secret:</strong> NPS gives you ₹50,000 ADDITIONAL deduction beyond your ₹1.5L 80C limit. This is completely separate!</p><p style="margin-bottom:12px"><strong>Total possible:</strong> ₹1.5L (80C) + ₹50K (NPS) = ₹2 lakh in deductions just from investments.</p><div style="background:var(--amber-light);border-radius:8px;padding:12px;margin:12px 0;"><strong>Who should do this?</strong> Anyone who has already maxed out 80C (₹1.5L) and wants to save even more tax. Especially good if you're in 30% tax slab.</div><p style="font-size:13px;color:var(--muted);">⚠️ NPS has lock-in till retirement age 60. Not ideal if you need the money before that.</p>` },
+  { cat:'housing', icon:'🏠', title:'Section 24(b) — Home Loan Interest', sub:'Deduct your home loan interest', saving:'Save up to ₹60,000/year', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> If you have a home loan, the INTEREST you pay every year is deducted from your income.</p><p style="margin-bottom:12px"><strong>How much?</strong> Up to ₹2,00,000 per year for self-occupied property. No limit for let-out property!</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;"><strong>Example:</strong> You paid ₹2,40,000 as interest this year. You can deduct ₹2,00,000. At 30% slab, you save ₹60,000 in tax!</div><p style="font-size:13px;color:var(--muted);">💡 Check your home loan statement for the "interest" component for the year.</p>` },
+  { cat:'housing', icon:'🏘️', title:'HRA Exemption', sub:'Live on rent? Save big!', saving:'Varies — can be ₹1L+ per year', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> If your employer gives you HRA (House Rent Allowance) and you pay rent, you don't pay tax on that HRA.</p><p style="margin-bottom:12px"><strong>Exemption = Lowest of 3 amounts:</strong></p><ol style="margin:0 0 12px 16px;line-height:1.8;font-size:13.5px;"><li>Actual HRA received from employer</li><li>50% of basic salary (metro) or 40% (non-metro)</li><li>Rent paid minus 10% of basic salary</li></ol><div style="background:var(--green-pale);border-radius:8px;padding:12px;"><strong>Documents needed:</strong> Rent receipts (monthly), Landlord's PAN if rent > ₹1L/year. Rent agreement helps too.</div>` },
+  { cat:'salary', icon:'💼', title:'Restructure Your Salary Components', sub:'Ask HR to optimize your salary structure', saving:'Save ₹20,000 – ₹80,000/year', detail:`<p style="margin-bottom:12px"><strong>The trick:</strong> Some salary components are partially or fully tax-exempt. If your entire salary is "basic", you miss these exemptions.</p><div style="background:var(--amber-light);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;line-height:1.7;"><strong>Tax-friendly components to request:</strong><ul style="margin:8px 0 0 16px;"><li><strong>LTA (Leave Travel Allowance)</strong> — Tax-free for 2 domestic journeys in 4 years</li><li><strong>Meal coupons (Sodexo etc.)</strong> — ₹2,200/month (₹26,400/year) exempt</li><li><strong>Mobile/Internet reimbursement</strong> — Actual bills are tax-free</li><li><strong>Books/Periodicals</strong> — Reimbursement is tax-free</li><li><strong>Driver's salary</strong> — If company provides car+driver</li><li><strong>Uniform allowance</strong> — If job requires uniform</li></ul></div>` },
+  { cat:'family', icon:'👨‍👩‍👧', title:'Invest in Spouse\'s Name', sub:'Split income to reduce tax', saving:'₹30,000 – ₹1,00,000+ depending on income', detail:`<p style="margin-bottom:12px"><strong>The strategy:</strong> If your spouse has little or no income, make investments in their name. Their income from those investments may be taxed at a lower rate (or even zero).</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;"><strong>Options:</strong><ul style="margin:8px 0 0 16px;line-height:1.8;"><li>FD in spouse's name — interest taxed at their (lower) slab</li><li>Mutual funds in spouse's name (LTCG ₹1.25L exempt each year for each person!)</li><li>Gift money to spouse, they invest — the "clubbing provision" applies for direct income but not for income-on-income</li></ul></div><p style="font-size:13px;color:var(--red);">⚠️ Direct income from assets transferred to spouse gets "clubbed" with your income (taxed in your hands). Consult a CA for complex arrangements.</p>` },
+  { cat:'family', icon:'👧', title:'Invest in Children\'s Name', sub:'Each child gets their own tax slab', saving:'₹20,000+ per year per child', detail:`<p style="margin-bottom:12px"><strong>What you can do:</strong> Invest in your child's name. Each child has their own ₹2.5L basic exemption. Income above ₹1,500/year is clubbed, but capital gains on equity/MF have their own ₹1.25L LTCG exemption!</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;"><strong>Best options for children:</strong><ul style="margin:8px 0 0 16px;line-height:1.8;"><li>Sukanya Samriddhi Yojana (for daughter) — 8.2% tax-free!</li><li>PPF in child's name — long-term wealth building</li><li>ELSS in child's name (after 18)</li></ul></div>` },
+  { cat:'investments', icon:'💸', title:'Section 80G — Donations', sub:'Donate and save tax', saving:'50% of donation amount', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> Donations to approved charities and funds give you a deduction from your income.</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;line-height:1.7;"><strong>100% deductible donations:</strong><ul style="margin:8px 0 0 16px;"><li>PM National Relief Fund</li><li>PM-CARES Fund</li><li>National Defence Fund</li><li>State Government relief funds</li></ul><strong style="margin-top:10px;display:block;">50% deductible donations:</strong><ul style="margin:8px 0 0 16px;"><li>Registered NGOs and charities</li><li>Jawaharlal Nehru Memorial Fund</li></ul></div><p style="font-size:13px;color:var(--muted);">💡 Always get an 80G receipt from the organization. Keep their 80G certificate number.</p>` },
+  { cat:'salary', icon:'🚗', title:'Leave Travel Allowance (LTA)', sub:'Tax-free reimbursement for travel', saving:'Save ₹5,000 – ₹30,000', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> LTA is a component in your salary. When you travel domestically with family, your company reimburses travel tickets — and this reimbursement is tax-free!</p><div style="background:var(--amber-light);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;line-height:1.7;"><strong>Rules:</strong><ul style="margin:8px 0 0 16px;"><li>Only air/train/bus fares qualify (not hotel, food)</li><li>Must travel to any place in India</li><li>Allowed for 2 journeys in a block of 4 years</li><li>Current block: 2022-2025</li><li>Family = spouse + 2 children + dependent parents/siblings</li></ul></div>` },
+  { cat:'investments', icon:'📈', title:'LTCG Harvesting — Equity Trick', sub:'Book ₹1.25L in gains every year tax-free', saving:'Save ₹15,000+ annually', detail:`<p style="margin-bottom:12px"><strong>The trick:</strong> Long-term capital gains on equity/mutual funds up to ₹1,25,000 per year are 100% tax-free. Use this every year!</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;line-height:1.7;"><strong>How to harvest gains:</strong><ol style="margin:8px 0 0 16px;"><li>Check your equity mutual fund/stock portfolio for unrealized gains</li><li>If gains are approaching ₹1.25L, sell those units</li><li>Immediately rebuy the same units</li><li>You've "reset" your cost price at the higher level</li><li>No actual tax paid — ₹1.25L was exempt!</li></ol></div><p style="font-size:13px;color:var(--muted);">💡 Do this every year in March. Even if you don't need the money, sell and rebuy.</p>` },
+  { cat:'salary', icon:'🍕', title:'Food Allowance / Meal Coupons', sub:'Small but free money every month', saving:'₹26,400 tax-free per year', detail:`<p style="margin-bottom:12px"><strong>What is it?</strong> If your employer gives food coupons (like Sodexo, Edenred) worth ₹2,200/month, that entire amount is tax-exempt!</p><p style="margin-bottom:12px">That's ₹26,400 per year of salary you don't pay any tax on.</p><div style="background:var(--green-pale);border-radius:8px;padding:12px;margin:12px 0;font-size:13px;"><strong>How to get it:</strong> Ask your HR to include a food allowance/meal voucher component in your CTC. Many companies offer this. You use the coupons at restaurants and grocery stores.</div>` },
+];
+
+function renderSavingCards(filter='all') {
+  const container = document.getElementById('saving-cards-container');
+  const filtered = filter === 'all' ? SAVINGS : SAVINGS.filter(s => s.cat === filter);
+  container.innerHTML = filtered.map((s, i) => `
+    <div class="saving-card" id="sc${i}">
+      <div class="saving-card-header">
+        <div class="saving-card-icon">${s.icon}</div>
+        <div style="flex:1"><div class="saving-card-title">${s.title}</div><div class="saving-card-sub">${s.sub}</div></div>
+        <div class="saving-card-amount">${s.saving}</div>
+      </div>
+      <div class="saving-card-body" id="scb${i}">${s.detail}<div style="margin-top:16px;padding:12px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);"><strong>💡 Use our tools:</strong> <button onclick="showPage('calculator')" style="background:none;border:none;color:var(--green);font-weight:700;text-decoration:underline;cursor:pointer;">Calculate your savings in the tax calculator →</button></div></div>
+      <div class="saving-card-footer">
+        <span class="badge badge-${s.cat==='investments'?'green':s.cat==='insurance'?'blue':s.cat==='housing'?'amber':'green'}">${s.cat.charAt(0).toUpperCase()+s.cat.slice(1)}</span>
+        <button class="saving-card-toggle" onclick="toggleSaving(${i})">Show Details ↓</button>
+      </div>
+    </div>`).join('');
+}
+
+function toggleSaving(i) {
+  const body = document.getElementById('scb' + i);
+  const btn = body.closest('.saving-card').querySelector('.saving-card-toggle');
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? 'Hide Details ↑' : 'Show Details ↓';
+}
+
+function filterSaving(cat) {
+  document.querySelectorAll('#page-savetax .tab-btn').forEach((b,i) => b.classList.toggle('active', ['all','investments','insurance','housing','salary','family'][i]===cat));
+  renderSavingCards(cat);
+}
+
+// ============================================================
+// LOOPHOLES DATA
+// ============================================================
+const LOOPHOLES = [
+  { label:'🏠 Housing', title:'Claim BOTH HRA and Home Loan Deduction', desc:'Most people think if you have a home loan, you can\'t claim HRA. WRONG! If your home is in a different city from where you work, you can claim HRA (for your rented accommodation) AND home loan interest and principal deductions simultaneously.', saving:'Combined savings: ₹3L+ per year', steps:['Have a home loan on property in City A','Work and rent in City B','Claim HRA exemption for City B rent','Claim Section 24(b) ₹2L interest for City A property','Claim 80C for principal repayment of City A loan'] },
+  { label:'👪 Family', title:'Pay Rent to Your Parents — Legally', desc:'If you live in your parents\' house and your salary includes HRA, you can pay rent to your parents and claim HRA exemption. Your parents declare it as income — but if they\'re in a lower tax slab (or have no income), the family as a whole pays less tax!', saving:'HRA exemption: ₹1L – ₹3L/year', steps:['Create a proper rent agreement with parents','Pay rent via bank transfer (for proof)','Collect rent receipts each month','Claim HRA exemption in your ITR','Parents declare it as "Income from House Property" — can deduct 30% standard deduction + property tax'] },
+  { label:'💰 Investments', title:'NPS via Employer = Extra 10% of Salary Deduction', desc:'If your employer contributes to your NPS Tier-1 account (under Section 80CCD(2)), that contribution — up to 10% of your Basic+DA salary — is FULLY deductible from your income. THIS WORKS EVEN IN THE NEW REGIME! It\'s in addition to everything else.', saving:'10% of basic salary — no limit!', steps:['Ask HR to restructure salary to include NPS employer contribution','Replace part of your "special allowance" with NPS contribution','Company deducts this and deposits in your NPS account','You get deduction under 80CCD(2) — works in OLD and NEW regime','Especially powerful for high earners: 10% of ₹5L basic = ₹50K extra deduction!'] },
+  { label:'📈 Capital Gains', title:'Equity LTCG Harvesting — ₹1.25L Free Every Year', desc:'Long-term capital gains on equity and equity mutual funds up to ₹1,25,000 per year are completely tax-free. Most investors don\'t use this — they let unrealised gains pile up and then pay 12.5% when they finally sell. Use this exemption every year!', saving:'Up to ₹15,625 saved annually', steps:['Each March/April, review your equity portfolio', 'Identify stocks/MF units with long-term unrealised gains near ₹1.25L', 'Sell those units — ₹1.25L comes out completely tax-free', 'Immediately rebuy the same stocks/funds', 'Your cost price "resets" to current market price', 'Next year, do the same!'] },
+  { label:'🏡 Property', title:'54EC Bonds — Avoid Capital Gains on Property Sale', desc:'Sold a property with big capital gains? You can completely avoid LTCG tax by investing the gains in Section 54EC bonds (NHAI, REC bonds) within 6 months of sale. These bonds have a 5-year lock-in.', saving:'Save entire capital gains tax (12.5-20%)', steps:['Sell property — calculate long-term capital gains','Within 6 months of sale, invest gains (up to ₹50L) in 54EC bonds','NHAI (National Highway Authority) bonds and REC bonds qualify','Hold for 5 years — gains become fully exempt','Interest from these bonds is taxable (usually ~5.25%)'] },
+  { label:'💸 Salary', title:'Gift Cards and Vouchers are Tax-Free', desc:'Gifts received from employer worth up to ₹5,000 per year are completely tax-free. Gifts from relatives are also tax-free regardless of amount. Wedding gifts have no tax limit at all!', saving:'₹5,000/year tax-free + wedding gifts', steps:['Employer can give gift vouchers worth ₹5,000/year tax-free','Gifts from relatives (as defined under Income Tax) are always tax-free','Cash gifts above ₹50,000 from non-relatives are taxable','Wedding gifts are 100% tax-free regardless of amount and source!','Keep documentation of gift source to prove exemption'] },
+  { label:'🏦 Smart Investing', title:'Section 54 — Reinvest Property Gains in New Property', desc:'Sell a residential house and buy another? Your ENTIRE long-term capital gains are tax-exempt under Section 54! No tax on property profits if you reinvest in a new home within 2 years (or construct within 3 years).', saving:'Entire capital gains tax exempted', steps:['Sell residential property','Buy another residential property within 1 year before or 2 years after sale (or construct within 3 years)','Capital gains up to new property cost = fully exempt','Remaining gains can be invested in Capital Gains Account Scheme (CGAS) at SBI/other banks if new property not purchased yet'] },
+  { label:'🎓 Education', title:'Section 80E — Entire Education Loan Interest Deductible', desc:'No upper limit on this deduction! If you have an education loan for yourself, spouse, or your children, the ENTIRE interest you pay is deductible from your income. Available for 8 consecutive years from start of repayment.', saving:'Entire interest amount — no cap!', steps:['Take education loan from any financial institution or approved charitable institution','Keep records of annual interest certificate from bank','Deduct full interest amount under Section 80E in ITR','Available for: own education, spouse, children, or student you are legal guardian of','Works even if you\'re paying off loans from years ago — 8-year window from repayment start'] },
+];
+
+function renderLoopholes() {
+  document.getElementById('loophole-cards').innerHTML = LOOPHOLES.map(l => `
+    <div class="loophole-card">
+      <div class="loophole-label">⚡ ${l.label}</div>
+      <div class="loophole-title">${l.title}</div>
+      <div class="loophole-desc">${l.desc}</div>
+      <div class="loophole-saving">💰 ${l.saving}</div>
+      <ul class="loophole-steps">${l.steps.map(s => `<li>${s}</li>`).join('')}</ul>
+    </div>`).join('');
+}
+
+// ============================================================
+// GLOSSARY DATA
+// ============================================================
+const GLOSSARY = [
+  { word:'ITR', full:'Income Tax Return', def:'A form you file with the government every year declaring how much you earned and how much tax you paid. It\'s like a report card of your income.', ex:'You need to file ITR by July 31st every year for the previous financial year.' },
+  { word:'TDS', full:'Tax Deducted at Source', def:'When someone pays you money (salary, interest, rent), they deduct some tax and pay it to the government directly on your behalf. It\'s like tax being deducted before you receive the money.', ex:'Your employer deducts TDS from your salary each month based on your annual income estimate.' },
+  { word:'AY / FY', full:'Assessment Year / Financial Year', def:'Financial Year (FY) is when you EARN the money. Assessment Year (AY) is when you FILE the return. FY 2024-25 means April 2024 to March 2025 — AY 2025-26 is when you file for it.', ex:'ITR for FY 2024-25 (April 2024–March 2025) is filed in AY 2025-26.' },
+  { word:'Form 26AS', full:'Annual Tax Statement', def:'A statement on the Income Tax portal showing ALL taxes deducted/paid in your name — TDS by employer, TDS on bank interest, advance tax, self-assessment tax, everything. Always cross-check this before filing ITR.', ex:'Find it at incometax.gov.in → Login → View AIS/26AS' },
+  { word:'AIS', full:'Annual Information Statement', def:'A newer, more comprehensive version of Form 26AS. Shows all your financial transactions — salary, bank interest, stock market transactions, mutual fund purchases, property registrations, and more.', ex:'Use AIS to cross-check that all your income sources are correctly reported.' },
+  { word:'Section 80C', full:'Investment & Deduction Limit', def:'The most popular tax-saving section. You can invest up to ₹1,50,000 in approved instruments (PPF, ELSS, LIC, NSC, EPF, home loan principal, tuition fees) and deduct that amount from your income.', ex:'Invest ₹1,50,000 in ELSS → Pay tax on ₹1,50,000 less income.' },
+  { word:'HRA', full:'House Rent Allowance', def:'A component in your salary that your employer gives you for paying rent. Part of this is exempt from tax if you actually pay rent. The exempt amount is calculated using a formula.', ex:'You get ₹20,000/month HRA and pay ₹15,000/month rent → Calculate exemption using HRA formula' },
+  { word:'PAN', full:'Permanent Account Number', def:'A 10-character alphanumeric ID issued by Income Tax department. Required for all financial transactions, tax filing, bank account opening, etc. Every taxpayer must have one.', ex:'ABCDE1234F is a sample PAN. Apply on UTI/NSDL website.' },
+  { word:'Advance Tax', full:'Pay-as-you-earn Tax', def:'If your total tax liability exceeds ₹10,000 per year (after TDS), you must pay tax in instalments during the year itself. Due in 4 instalments: June 15, September 15, December 15, March 15.', ex:'Expected tax ₹50,000 → Pay ₹7,500 by June, more by September, etc.' },
+  { word:'LTCG', full:'Long Term Capital Gains', def:'Profit from selling an investment you held for a long time. For equity/MF: held >1 year. For property/gold: held >2 years. Taxed at lower rates than regular income.', ex:'Bought shares at ₹1,00,000, sold after 2 years for ₹2,00,000 → ₹1,00,000 LTCG, taxed at 12.5% (first ₹1.25L exempt)' },
+  { word:'STCG', full:'Short Term Capital Gains', def:'Profit from selling an investment quickly (within 1 year for equity, within 2 years for property). Taxed at 20% for equity and at your regular slab rate for other assets.', ex:'Bought and sold stocks within 6 months → STCG at 20%' },
+  { word:'Standard Deduction', full:'Flat Deduction for Salaried Employees', def:'A flat ₹75,000 (new regime) or ₹50,000 (old regime) is automatically deducted from your salary income. No proof needed. Everyone gets it.', ex:'Salary ₹8,00,000 → Taxable income reduced to ₹7,25,000 automatically in new regime' },
+  { word:'Form 16', full:'TDS Certificate from Employer', def:'A document your employer gives you by June 15 every year. Shows your total salary, all TDS deducted, and Form 12BB investments. Use this to file your ITR — all the data is in Form 16.', ex:'Ask HR for Form 16 every year before filing ITR.' },
+  { word:'87A Rebate', full:'Zero Tax for Lower Income', def:'If your total income (after all deductions) is ₹7,00,000 or less (new regime) or ₹5,00,000 (old regime), your tax liability becomes ZERO due to this rebate — even if the slab calculation shows some tax.', ex:'New regime: Income ₹7L → Tax calculated at slabs = ₹22,500, but 87A rebate = 100% tax waived → Pay ZERO tax!' },
+  { word:'NPS', full:'National Pension System', def:'A government pension scheme for retirement. You contribute monthly/annually, money is invested in market instruments, and at retirement (age 60) you receive 40% as lump sum and 60% as monthly pension. Gives extra ₹50,000 tax deduction under 80CCD(1B).', ex:'Invest ₹50,000 in NPS → Get ₹50,000 extra deduction on top of 80C limit.' },
+];
+
+const GUIDES = [
+  { icon:'🧑‍💼', title:'I\'m Salaried — What Do I Need to Do?', steps:['Check your Form 26AS and AIS on IT portal every year', 'Collect Form 16 from your employer (by June 15)', 'Calculate which regime (old/new) saves more tax', 'File ITR-1 (or ITR-2 if you have capital gains) by July 31', 'Verify return using Aadhaar OTP or bank account'] },
+  { icon:'💼', title:'I Have a Business / Freelance Income', steps:['Maintain a basic income-expenditure record', 'Keep all invoices and receipts', 'If turnover < ₹50L (services) or ₹2Cr (goods), use presumptive scheme (ITR-4, 44AD/44ADA)', 'Pay advance tax in 4 instalments if tax > ₹10,000', 'File ITR-3 or ITR-4 by July 31 (or October 31 if audit required)'] },
+  { icon:'🌏', title:'I\'m an NRI — What Are My Rules?', steps:['Determine your residential status (183 days rule)', 'Indian income (salary, rent, capital gains) is always taxable in India', 'Foreign income is NOT taxable in India for NRIs', 'Open NRE account for foreign earnings (tax-free interest!)', 'File ITR if Indian income exceeds basic exemption'] },
+  { icon:'👴', title:'I\'m a Senior Citizen — What\'s Different?', steps:['Basic exemption: ₹3L (age 60-80), ₹5L (above 80) under old regime', 'Senior citizens (above 75) with only pension+bank interest: no ITR filing needed!', 'No advance tax for senior citizens without business income', 'Form 15H: Submit to bank to avoid TDS on FD interest', '80D: Health insurance premium deduction up to ₹50,000'] },
+];
+
+function renderLearn() {
+  renderGlossary('');
+  document.getElementById('guides-container').innerHTML = GUIDES.map(g => `
+    <div class="accordion" style="margin-bottom:12px;">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <span>${g.icon} ${g.title}</span><span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <ol style="margin:16px 0 0 20px;line-height:2;font-size:14px;">${g.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+      </div>
+    </div>`).join('');
+}
+
+function renderGlossary(filter) {
+  const filtered = filter ? GLOSSARY.filter(g => g.word.toLowerCase().includes(filter) || g.full.toLowerCase().includes(filter) || g.def.toLowerCase().includes(filter)) : GLOSSARY;
+  document.getElementById('glossary-container').innerHTML = filtered.map(g => `
+    <div class="glossary-term">
+      <div class="glossary-word"><span class="badge badge-green">${g.word}</span> ${g.full}</div>
+      <div class="glossary-def">${g.def}</div>
+      <div class="glossary-example">📌 Example: ${g.ex}</div>
+    </div>`).join('');
+}
+
+function searchGlossary() {
+  renderGlossary(document.getElementById('glossary-search').value.toLowerCase());
+}
+
+function toggleAcc(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// ============================================================
+// CHECKLIST DATA
+// ============================================================
+const CHECKLISTS = {
+  itr1: { title:'ITR-1 — Salaried Employee', docs:[
+    { name:'Form 16 (Part A & Part B)', desc:'Issued by your employer by June 15. Shows salary breakdown and TDS deducted.'},
+    { name:'PAN Card', desc:'Your 10-digit Permanent Account Number.' },
+    { name:'Aadhaar Card', desc:'Required for e-verification of ITR.' },
+    { name:'Form 26AS / AIS', desc:'Download from incometax.gov.in → Shows all TDS and income records.' },
+    { name:'Bank Account Statement', desc:'All bank accounts — to verify interest income.' },
+    { name:'FD Interest Certificate', desc:'From bank if you have Fixed Deposits. Banks issue annually.' },
+    { name:'Rent Receipts', desc:'If claiming HRA — receipts + landlord PAN if rent > ₹1L/year.' },
+    { name:'Investment Proofs (80C)', desc:'PPF passbook, ELSS statement, LIC policy receipt, etc.' },
+    { name:'Health Insurance Premium Receipt (80D)', desc:'Premium receipt from insurer for self + family + parents.' },
+    { name:'Home Loan Interest Certificate', desc:'From bank/NBFC showing interest and principal paid.' },
+  ], where:'<strong>Form 16:</strong> Ask your employer HR by June 15.<br><br><strong>Form 26AS:</strong> Login to incometax.gov.in → My Account → View Form 26AS.<br><br><strong>AIS:</strong> IT portal → Services → Annual Information Statement.<br><br><strong>Bank statements:</strong> Download from net banking or visit branch.', tips:[
+    'File early — avoid July 31 rush',
+    'Cross-check Form 26AS before filing to avoid mismatch notices',
+    'Use ITR-1 only if income is from salary + one house property + other sources (no capital gains)',
+    'E-verify within 30 days of filing using Aadhaar OTP',
+  ]},
+  itr2: { title:'ITR-2 — Capital Gains / Multiple Properties', docs:[
+    { name:'All ITR-1 documents', desc:'Everything listed for ITR-1 applies.' },
+    { name:'Capital Gains Statement from Broker', desc:'Annual P&L statement from Zerodha, Groww, etc. Download from your broker portal.' },
+    { name:'Mutual Fund Capital Gains Report', desc:'From CAMS or Karvy — shows all MF transactions.' },
+    { name:'Property Purchase/Sale Documents', desc:'Sale deed, purchase deed, registration documents.' },
+    { name:'Cost of Improvement records', desc:'Bills for renovation/improvement of property (reduces capital gains).' },
+  ], where:'<strong>Broker statement:</strong> Login to Zerodha/Groww/Upstox → P&L or Tax Report section.<br><br><strong>MF statement:</strong> Visit cams.kfintech.com or call 1800-180-2267.<br><br><strong>Property documents:</strong> Original sale deed from registration office.', tips:[
+    'Use CAMS/Karvy consolidated statement for ALL mutual funds',
+    'Capital losses can be set off against gains — don\'t forget to report all transactions',
+    'If you sold property, check if 54/54EC reinvestment exemption applies',
+  ]},
+  gst_reg: { title:'GST Registration', docs:[
+    { name:'PAN of Business / Proprietor', desc:'Required for all business types.' },
+    { name:'Aadhaar of Proprietor / Partners / Directors', desc:'For identity verification.' },
+    { name:'Photograph (passport size)', desc:'Of proprietor/all partners/directors.' },
+    { name:'Proof of Business Address', desc:'Electricity bill / rent agreement / property tax receipt of office.' },
+    { name:'Bank Account Proof', desc:'Cancelled cheque or bank statement (first page with account details).' },
+    { name:'Certificate of Incorporation', desc:'For company/LLP — issued by MCA.' },
+    { name:'Partnership Deed', desc:'For partnership firms.' },
+    { name:'Letter of Authorization', desc:'Authorizing signatory to apply for GST.' },
+  ], where:'<strong>GST registration:</strong> Apply online at gst.gov.in — completely paperless!<br><br><strong>Business address proof:</strong> Electricity bill in business name or owner name. If rented, rent agreement + NOC from landlord.<br><br><strong>Bank proof:</strong> Download from net banking — account statement showing name, account number, IFSC.', tips:[
+    'GST registration is free — no fees!',
+    'Mandatory if turnover > ₹20L (₹10L in special category states)',
+    'Voluntary registration possible even below threshold — helpful for input tax credit',
+    'Process takes 3-7 working days',
+  ]},
+  company: { title:'Company Incorporation (Private Limited)', docs:[
+    { name:'PAN of all Directors', desc:'Copy of PAN card for each proposed director.' },
+    { name:'Aadhaar / Voter ID of Directors', desc:'Address proof.' },
+    { name:'Photograph of all Directors', desc:'Passport size, recent.' },
+    { name:'Proof of Registered Office', desc:'Electricity bill + NOC from owner if rented.' },
+    { name:'Rent Agreement (if office rented)', desc:'Notarized rent agreement.' },
+    { name:'DIN of Directors (if existing)', desc:'Director Identification Number if directors already have one.' },
+    { name:'Email and Mobile (all directors)', desc:'Unique email and mobile for each director for OTP verification.' },
+    { name:'DSC (Digital Signature Certificate)', desc:'Class 3 DSC needed for all directors. Get from certified agencies.' },
+    { name:'Proposed Company Name (3 options)', desc:'In order of preference. Check availability on MCA portal.' },
+    { name:'Objects/Nature of Business', desc:'Brief description of what company will do — needed for MOA.' },
+  ], where:'<strong>MCA portal:</strong> mca.gov.in — SPICe+ form for incorporation.<br><br><strong>DSC:</strong> Apply at eMudhra, Sify, or NSDL DSC agencies (cost: ₹1,500–₹2,500).<br><br><strong>Name check:</strong> MCA portal → MCA Services → Run Name Check.', tips:[
+    'Minimum 2 directors and 2 shareholders for Pvt Ltd',
+    'Minimum paid-up capital: ₹1 lakh (but can be as low as ₹2 in practice)',
+    'Government fees vary by authorized capital — keep it low initially',
+    'Process takes 7-15 days after all documents submitted',
+  ]},
+};
+
+let checklistState = {};
+function showChecklist() {
+  const type = document.getElementById('checklist-type').value;
+  const data = CHECKLISTS[type];
+  if (!data) return;
+  document.getElementById('checklist-title').textContent = data.title;
+  document.getElementById('where-to-find').innerHTML = data.where;
+  document.getElementById('filing-tips').innerHTML = data.tips.map(t => `<div style="display:flex;gap:10px;margin-bottom:10px;font-size:13.5px;"><span style="color:var(--green);font-weight:800;">→</span><span>${t}</span></div>`).join('');
+  checklistState = {};
+  const items = document.getElementById('checklist-items');
+  items.innerHTML = data.docs.map((d, i) => `
+    <div class="checklist-item">
+      <div class="check-box" id="chk-${type}-${i}" onclick="toggleCheck('${type}',${i})"></div>
+      <div class="checklist-text">
+        <div class="checklist-name">${d.name}</div>
+        <div class="checklist-desc">${d.desc}</div>
+      </div>
+    </div>`).join('');
+  updateCheckProgress(type);
+}
+
+function toggleCheck(type, i) {
+  const key = type + '-' + i;
+  checklistState[key] = !checklistState[key];
+  const el = document.getElementById('chk-' + type + '-' + i);
+  el.classList.toggle('checked', !!checklistState[key]);
+  el.textContent = checklistState[key] ? '✓' : '';
+  updateCheckProgress(type);
+}
+
+function updateCheckProgress(type) {
+  const data = CHECKLISTS[type];
+  const total = data.docs.length;
+  const done = Object.keys(checklistState).filter(k => k.startsWith(type) && checklistState[k]).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('checklist-fill').style.width = pct + '%';
+  document.getElementById('checklist-count').textContent = `${done} of ${total} documents collected (${pct}% ready)`;
+}
+
+function resetChecklist() {
+  checklistState = {};
+  showChecklist();
+}
+
+// ============================================================
+// CHAT BOT
+// ============================================================
+function toggleChat() {
+  const panel = document.getElementById('chatPanel');
+  panel.classList.toggle('open');
+  document.getElementById('fab').textContent = panel.classList.contains('open') ? '✕' : '💬';
+}
+
+const chatKnowledge = {
+  '80c': 'Section 80C lets you deduct up to ₹1,50,000 per year from your income by investing in PPF, ELSS, LIC, NSC, EPF, home loan principal, tuition fees, etc. At 30% slab, this saves ₹46,800 in tax! 💡 Use our Save Tax page to see all options.',
+  'hra': 'HRA (House Rent Allowance) exemption = Lowest of: (1) Actual HRA received, (2) 50% of Basic (metro) or 40% (non-metro), (3) Rent paid minus 10% of Basic Salary. Use our HRA Calculator in the Tools page for exact amount!',
+  'new regime': 'New Tax Regime has lower tax rates but NO deductions (no 80C, no HRA, no home loan). It\'s the default from FY 2023-24. Best for people with few investments. Standard deduction ₹75,000 is now available! Use our calculator to compare.',
+  'old regime': 'Old Tax Regime allows all deductions — 80C, 80D, HRA, home loan interest, etc. You must actively opt for it. Better if you invest ₹1.5L+ in 80C, pay rent, or have home loan. Compare in our calculator!',
+  'itr deadline': '📅 ITR filing deadlines: July 31 for individuals (no audit). October 31 for audit cases. December 31 for belated return. After December 31 — no option to file!',
+  'tds': 'TDS (Tax Deducted at Source) is tax deducted before you receive money. Your employer deducts monthly. Banks deduct on FD interest. TDS shows in Form 26AS. If excess TDS deducted → you get REFUND when filing ITR.',
+  'gst': 'GST (Goods and Services Tax) is charged on sale of goods/services. Rates: 0% (essential), 5%, 12%, 18% (most services), 28% (luxury). CGST+SGST for intra-state, IGST for inter-state. Use our GST Calculator in Tools!',
+  'advance tax': 'Advance Tax: If your tax liability > ₹10,000/year after TDS, you must pay in 4 instalments: 15% by June 15, 45% by Sep 15, 75% by Dec 15, 100% by Mar 15. Missing = 1% monthly interest under 234C.',
+  'form 26as': 'Form 26AS is your annual tax statement showing all TDS deducted in your name, advance tax paid, refunds issued. Always cross-check this before filing ITR. Find it at incometax.gov.in.',
+  'nps': 'NPS (National Pension System) gives you an extra ₹50,000 deduction under 80CCD(1B) — completely separate from 80C! So you can get ₹1.5L + ₹50K = ₹2L in tax-saving deductions from investments alone.',
+  'ppf': 'PPF (Public Provident Fund) is a government scheme with 7.1% interest, 15-year lock-in, fully tax-free (EEE status). Invest up to ₹1.5L/year. All interest and maturity amount are tax-free!',
+  'save tax': 'Top ways to save tax: 1) Max out 80C (₹1.5L in PPF/ELSS/LIC) 2) Get health insurance (80D) 3) Invest in NPS (extra ₹50K deduction) 4) Claim HRA if you pay rent 5) Home loan interest (₹2L deduction). Check our Save Tax page!',
+  'penalty': 'Late ITR filing penalty: ₹5,000 if income > ₹5L (₹1,000 if less) under Section 234F. Plus 1% monthly interest on tax due (234A). Cannot carry forward capital losses if ITR filed late!',
+  'refund': 'If more TDS was deducted than your actual tax, you get a REFUND. File ITR to claim it. Usually credited to bank account within 3-4 weeks of ITR verification. Track at tin.tin.nsdl.com.',
+  'hello': 'Hello! 👋 I\'m TaxBot, your free Indian tax assistant. I can help with ITR filing, tax saving tips, GST, TDS, deadlines, and more. What would you like to know?',
+  'thanks': 'You\'re welcome! 😊 If you need more help, explore our free calculators and guides. Happy filing!',
+};
+
+function sendChat() {
+  const input = document.getElementById('chatInp');
+  const msg = input.value.trim();
+  if (!msg) return;
+  addChatMsg(msg, 'user');
+  input.value = '';
+  setTimeout(() => {
+    const lower = msg.toLowerCase();
+    let reply = 'Great question! For specific tax advice, I recommend using our detailed calculators. I can answer general queries about: 80C, HRA, old/new regime, ITR deadline, TDS, GST, advance tax, PPF, NPS, Form 26AS, penalties, refunds, and more.';
+    for (const [key, val] of Object.entries(chatKnowledge)) {
+      if (lower.includes(key)) { reply = val; break; }
+    }
+    addChatMsg(reply, 'bot');
+  }, 600);
+}
+
+function addChatMsg(text, type) {
+  const body = document.getElementById('chatBody');
+  body.innerHTML += `<div class="chat-msg ${type}">${text}</div>`;
+  body.scrollTop = body.scrollHeight;
+}
+
+function quickChat(text) {
+  document.getElementById('chatInp').value = text;
+  sendChat();
+  document.getElementById('chatQuick').style.display = 'none';
+}
+
+function chatEnter(e) { if (e.key === 'Enter') sendChat(); }
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  renderSavingCards();
+  renderLoopholes();
+  renderDueDates();
+  renderLearn();
+  showChecklist();
+  // Intersection observer for animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>
